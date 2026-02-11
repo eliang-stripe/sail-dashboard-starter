@@ -22,7 +22,7 @@ export default function App() {
         <Sidebar />
 
         {/* Main Content Area - outer div handles scroll, inner div handles max-width */}
-        <div className="w-full flex flex-col min-w-0 relative overflow-auto">
+        <div className="w-full flex flex-col min-w-0 relative overflow-auto scrollbar-auto">
           <div className="max-w-[1280px] w-full mx-auto">
             {/* Header */}
             <Header sticky />

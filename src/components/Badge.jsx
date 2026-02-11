@@ -1,14 +1,13 @@
 import React from 'react';
 
 const Badge = ({ children, variant = 'default', className = '' }) => {
-  // Using CSS variables that automatically switch between light/dark mode
-  // based on whether parent has .dark-mode class
+  // Map variants to Tailwind theme colors
   const variants = {
-    default: 'text-[var(--badge-default-text)] bg-[var(--badge-default-bg)] border-[var(--badge-default-border)]',
-    success: 'text-[var(--badge-success-text)] bg-[var(--badge-success-bg)] border-[var(--badge-success-border)]',
-    warning: 'text-[var(--badge-warning-text)] bg-[var(--badge-warning-bg)] border-[var(--badge-warning-border)]',
-    danger: 'text-[var(--badge-danger-text)] bg-[var(--badge-danger-bg)] border-[var(--badge-danger-border)]',
-    info: 'text-[var(--badge-info-text)] bg-[var(--badge-info-bg)] border-[var(--badge-info-border)]',
+    default: 'text-badge-default-text bg-badge-default-bg border-badge-default-border',
+    success: 'text-badge-success-text bg-badge-success-bg border-badge-success-border',
+    warning: 'text-badge-warning-text bg-badge-warning-bg border-badge-warning-border',
+    danger: 'text-badge-danger-text bg-badge-danger-bg border-badge-danger-border',
+    info: 'text-badge-info-text bg-badge-info-bg border-badge-info-border',
   };
 
   return (

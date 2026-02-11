@@ -92,7 +92,7 @@ const Table = ({
         ) : (
           <table className="w-full">
             <thead>
-              <tr className="border-b border-[var(--border)]">
+              <tr className="border-b border-border">
                 {columns.map((column, colIndex) => (
                   <th
                     key={column.key || colIndex}
@@ -114,7 +114,7 @@ const Table = ({
                 data.map((item, rowIndex) => (
                   <tr
                     key={item[rowKey] ?? rowIndex}
-                    className={`border-b text-sm border-[var(--border)] hover:bg-[var(--bg-hover)] transition-colors duration-100 ${onRowClick ? 'cursor-pointer' : ''}`}
+                    className={`border-b text-sm border-border hover:bg-bg-hover transition-colors duration-100 ${onRowClick ? 'cursor-pointer' : ''}`}
                     onClick={() => onRowClick?.(item, rowIndex)}
                   >
                     {columns.map((column, colIndex) => (

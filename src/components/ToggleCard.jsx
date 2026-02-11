@@ -10,39 +10,28 @@ const ToggleCard = ({
   description,
   selected = false,
   onClick,
-  themeColor = '#0085FF',
-  darkMode = false,
 }) => {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`w-full text-left border rounded-lg transition-colors cursor-pointer ${selected
-        ? 'border-2 p-[11px]'
-        : `border p-[12px] ${darkMode ? 'border-gray-600 hover:bg-gray-800/50' : 'border-gray-300 hover:bg-gray-50'}`
+      className={`w-full text-left rounded-lg transition-colors cursor-pointer ${selected
+        ? 'border-2 border-blurple p-[11px]'
+        : 'border border-gray-300 hover:bg-gray-50 p-[12px]'
         }`}
-      style={{
-        borderColor: selected ? themeColor : undefined,
-      }}
     >
       <div className="flex items-start gap-2.5">
         {Icon && (
-          <div
-            className="mt-0.5 flex-shrink-0"
-            style={{ color: selected ? themeColor : darkMode ? '#9CA3AF' : '#6B7280' }}
-          >
+          <div className={`mt-0.5 flex-shrink-0 ${selected ? 'text-blurple' : 'text-gray-500'}`}>
             <Icon size={16} />
           </div>
         )}
         <div className="flex-1">
-          <div
-            className="text-sm font-medium"
-            style={{ color: selected ? themeColor : darkMode ? '#FFFFFF' : '#111827' }}
-          >
+          <div className={`text-sm font-medium ${selected ? 'text-blurple' : 'text-gray-900'}`}>
             {title}
           </div>
           {description && (
-            <div className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{description}</div>
+            <div className="text-sm text-gray-500">{description}</div>
           )}
         </div>
       </div>
@@ -54,7 +43,7 @@ const ToggleCard = ({
  * A group wrapper for multiple toggle cards
  * @param {string} layout - 'vertical' (default) or 'horizontal'
  */
-export const ToggleCardGroup = ({ children, label, layout = 'vertical', darkMode = false }) => {
+export const ToggleCardGroup = ({ children, label, layout = 'vertical' }) => {
   const layoutClass = layout === 'horizontal'
     ? 'flex gap-2'
     : 'space-y-2';
@@ -62,7 +51,7 @@ export const ToggleCardGroup = ({ children, label, layout = 'vertical', darkMode
   return (
     <div>
       {label && (
-        <label className={`block text-sm font-medium mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+        <label className="block text-sm font-medium mb-2 text-gray-700">
           {label}
         </label>
       )}

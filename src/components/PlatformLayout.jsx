@@ -3,14 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '../icons/SailIcons';
 
 export const NavItem = ({ icon, label, active, highlighted, to }) => {
+  const isHighlighted = active || highlighted;
   const content = (
-    <div className={`flex items-center space-x-2 h-[30px] px-1 rounded-md cursor-pointer ${active ? 'bg-gray-50' : 'hover:bg-gray-50'}`}>
+    <div className="flex items-center space-x-2 h-[30px] px-1 rounded-md cursor-pointer hover:bg-gray-50">
       {icon && (
-        <div className="w-6 h-6 flex items-center justify-center text-gray-500">
+        <div className={`w-6 h-6 flex items-center justify-center ${isHighlighted ? 'text-[#533AFD]' : 'text-gray-500'}`}>
           {icon}
         </div>
       )}
-      <span className={`text-sm flex-1 ${highlighted ? 'text-[#533AFD]' : 'text-gray-700'}`}>{label}</span>
+      <span className={`text-sm flex-1 ${isHighlighted ? 'text-[#533AFD] font-medium' : 'text-gray-700'}`}>{label}</span>
     </div>
   );
 

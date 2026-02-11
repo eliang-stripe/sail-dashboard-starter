@@ -40,7 +40,7 @@ const Input = ({
   const [isFocused, setIsFocused] = useState(false);
 
   const darkModeStyles = darkMode
-    ? 'bg-transparent text-white border-[var(--border)] placeholder-[var(--text-secondary)] disabled:bg-gray-950 disabled:opacity-50'
+    ? 'bg-transparent text-white border-border placeholder-text-secondary disabled:bg-gray-950 disabled:opacity-50'
     : 'bg-white text-gray-900';
 
   // Determine padding based on icon, prefix, or suffix
@@ -92,7 +92,7 @@ const Input = ({
           disabled={disabled}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          className={`w-full px-3 py-2 border border-[var(--border)] rounded-md focus:outline focus:outline-2 focus:outline-offset-0 text-[16px] sm:text-sm disabled:opacity-60 disabled:bg-gray-100 ${leftPadding} ${rightPadding} ${darkModeStyles} ${error ? 'border-red-500' : ''} ${className}`}
+          className={`w-full px-3 py-2 border border-border rounded-md focus:outline focus:outline-2 focus:outline-offset-0 text-[16px] sm:text-sm disabled:opacity-60 disabled:bg-gray-100 ${leftPadding} ${rightPadding} ${darkModeStyles} ${error ? 'border-red-500' : ''} ${className}`}
           style={{
             outlineColor: `${themeColor}70`,
           }}

@@ -202,37 +202,35 @@ Available icons: `add`, `home`, `balance`, `arrowsLoop`, `person`, `product`, `p
 
 Sizes: `xxsmall` (8px), `xsmall` (12px), `small` (16px), `medium` (20px), `large` (32px)
 
-## CSS Variables
+## Theming
 
-All colors use CSS variables for easy theming. Edit `src/index.css` to customize:
+All colors are defined as Tailwind theme variables in `src/index.css`. This lets you use them as standard utility classes:
 
 ```css
-:root {
-  /* Backgrounds */
-  --bg: #ffffff;
-  --bg-secondary: #f9fafb;
-  --bg-offset: #F5F6F8;
-  --bg-hover: #f9fafb;
+@theme {
+  /* Colors - use as bg-primary, text-primary, border-border, etc. */
+  --color-primary: #635BFF;
+  --color-bg: #ffffff;
+  --color-bg-hover: #f9fafb;
+  --color-text-primary: #010101;
+  --color-text-secondary: #4b5563;
+  --color-border: #D8DEE4;
 
-  /* Text */
-  --text-primary: #010101;
-  --text-secondary: #4b5563;
-  --text-muted: #9ca3af;
-
-  /* Borders */
-  --border: #e5e7eb;
-
-  /* Badges */
-  --badge-success-bg: #EAFCDD;
-  --badge-success-text: #217005;
-  --badge-warning-bg: #FDF8C9;
-  --badge-warning-text: #B13600;
-  --badge-danger-bg: #FEF4F6;
-  --badge-danger-text: #C0123C;
-  --badge-info-bg: #E2FBFE;
-  --badge-info-text: #045AD0;
+  /* Badge variants */
+  --color-badge-success-bg: #EAFCDD;
+  --color-badge-success-text: #217005;
   /* ... and more */
 }
+```
+
+### Usage
+
+```jsx
+{/* Use theme colors as Tailwind utilities */}
+<div className="bg-primary text-white">Primary button</div>
+<div className="border border-border">Bordered element</div>
+<div className="text-text-secondary">Secondary text</div>
+<div className="hover:bg-bg-hover">Hoverable row</div>
 ```
 
 ### Dark Mode
