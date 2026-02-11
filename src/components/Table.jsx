@@ -15,7 +15,6 @@ import React from 'react';
  * @param {Function} props.onRowClick - Click handler for rows (optional)
  * @param {Function} props.mobileRow - Render function for mobile rows: (item, onClick, index) => ReactNode
  * @param {boolean} props.isLoading - Show loading spinner
- * @param {boolean} props.darkMode - Dark mode styling
  * @param {string} props.rowKey - Property to use as React key (default: 'id')
  * @param {string} props.cellPaddingX - Default horizontal padding for cells (default: 'px-4')
  * @param {string} props.emptyStateTitle - Title text for empty state
@@ -28,7 +27,6 @@ const Table = ({
   onRowClick,
   mobileRow,
   isLoading = false,
-  darkMode = false,
   rowKey = 'id',
   cellPaddingX = 'px-4',
   emptyStateTitle = null,
@@ -60,7 +58,7 @@ const Table = ({
   // Loading spinner
   const LoadingSpinner = () => (
     <div className="flex items-center justify-center">
-      <div className={`w-6 h-6 border-2 rounded-full animate-spin ${darkMode ? 'border-gray-600 border-t-gray-300' : 'border-gray-300 border-t-gray-600'}`} />
+      <div className="w-6 h-6 border-2 rounded-full animate-spin border-border border-t-gray-600" />
     </div>
   );
 
@@ -69,12 +67,12 @@ const Table = ({
 
   // Empty state content component - centered in a dotted border container
   const EmptyStateContent = () => (
-    <div className={`border border-dashed rounded-lg py-16 px-8 flex flex-col items-center justify-center ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}>
+    <div className="border border-dashed border-border rounded-lg py-16 px-8 flex flex-col items-center justify-center">
       {emptyStateTitle && (
-        <div className={`text-base font-semibold ${darkMode ? 'text-gray-400' : 'text-gray-700'}`}>{emptyStateTitle}</div>
+        <div className="text-base font-semibold text-default">{emptyStateTitle}</div>
       )}
       {emptyStateDescription && (
-        <div className={`text-sm mt-1 ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>{emptyStateDescription}</div>
+        <div className="text-sm mt-1 text-subdued">{emptyStateDescription}</div>
       )}
       {emptyStateAction && <div className="mt-4">{emptyStateAction}</div>}
     </div>
@@ -96,7 +94,7 @@ const Table = ({
                 {columns.map((column, colIndex) => (
                   <th
                     key={column.key || colIndex}
-                    className={`py-3 ${column.paddingX || cellPaddingX} text-xs font-medium uppercase ${getAlignClass(column.align)} ${getWidthClass(column.width)} ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}
+                    className={`py-3 ${column.paddingX || cellPaddingX} text-xs font-medium uppercase text-subdued ${getAlignClass(column.align)} ${getWidthClass(column.width)}`}
                   >
                     {column.header || ''}
                   </th>

@@ -29,9 +29,36 @@ This separation keeps the scrollbar on the right edge of the viewport while cent
 
 **`src/icons/SailIcons.jsx`**: SVG icon system with 15 icons. Icons use `forwardRef` and accept `size` (xxsmall/xsmall/small/medium/large) and `fill` props.
 
-### CSS Variables
+### Theming & Custom Colors
 
-All theming uses CSS custom properties in `src/index.css`. Variables include `--bg`, `--border`, `--text-primary`, `--badge-*-bg/text`, etc. Dark mode activates via `.dark-mode` class on any parent element.
+All theming uses Tailwind CSS 4's `@theme` block in `src/index.css`. **Always prefer these semantic color tokens over hardcoded values like `gray-500` or `#ccc`.**
+
+**Text colors** (use with `text-*`):
+- `text-default` - Primary text (#353A44)
+- `text-subdued` - Secondary/muted text (#596171)
+- `text-brand` - Brand purple (#533AFD)
+- `text-info`, `text-success`, `text-attention`, `text-critical` - Status text
+
+**Background colors** (use with `bg-*`):
+- `bg-bg` - Page background (#ffffff)
+- `bg-bg-offset` - Offset sections (#F5F6F8)
+- `bg-bg-hover` - Hover states (#f9fafb)
+- `bg-blurple` - Brand purple (#635BFF)
+
+**Border & UI colors**:
+- `border-border` - Standard borders (#D8DEE4)
+- `border-blurple` - Brand accent borders
+
+**Button colors** (complete sets):
+- `bg-button-primary-bg`, `text-button-primary-text`, `border-button-primary-border`
+- `bg-button-secondary-bg`, `text-button-secondary-text`, `border-button-secondary-border`
+
+**Badge variants** (bg, border, text for each):
+- `badge-default-*`, `badge-success-*`, `badge-warning-*`, `badge-danger-*`, `badge-info-*`
+
+**Focus states**: Use `focus:outline-blurple/50` for consistent focus rings.
+
+**Icon colors**: `text-icon-default`, `text-icon-subdued`, `text-icon-brand`, etc.
 
 ### Adding New Pages
 

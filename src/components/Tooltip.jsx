@@ -6,7 +6,6 @@ const Tooltip = ({
   content,
   placement = 'top',
   variant = 'default',
-  darkMode = false,
   usePortal = false,
   className = '',
 }) => {
@@ -27,10 +26,8 @@ const Tooltip = ({
   };
 
   const variantModeClasses = {
-    default: darkMode
-      ? 'bg-gray-800 text-white border border-gray-700'
-      : 'bg-white text-gray-600 border border-gray-200 shadow-md',
-    minimal: '', // minimal is the same in both modes
+    default: 'bg-white text-subdued border border-border shadow-md',
+    minimal: '',
   };
 
   const variantClasses = `${variantBaseClasses[variant]} ${variantModeClasses[variant]}`;

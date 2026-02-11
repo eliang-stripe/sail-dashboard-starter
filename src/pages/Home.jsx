@@ -33,13 +33,13 @@ export default function Home() {
   return (
     <div className="p-8 space-y-12">
       <div>
-        <h1 className="text-2xl font-semibold text-gray-900 mb-2">Component Examples</h1>
-        <p className="text-gray-500">Edit <code className="bg-gray-100 px-2 py-1 rounded text-sm">src/pages/Home.jsx</code> to edit this page.</p>
+        <h1 className="text-2xl font-semibold text-default mb-2">Component Examples</h1>
+        <p className="text-subdued">Edit <code className="bg-bg-offset px-2 py-1 rounded text-sm">src/pages/Home.jsx</code> to edit this page.</p>
       </div>
 
       {/* Badges */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Badge</h2>
+        <h2 className="text-lg font-semibold text-default mb-4">Badge</h2>
         <div className="flex flex-wrap gap-2">
           <Badge>Default</Badge>
           <Badge variant="success">Success</Badge>
@@ -47,7 +47,7 @@ export default function Home() {
           <Badge variant="danger">Danger</Badge>
           <Badge variant="info">Info</Badge>
         </div>
-        <pre className="mt-3 p-3 bg-gray-50 rounded text-xs overflow-x-auto">
+        <pre className="mt-3 p-3 bg-bg-offset rounded text-xs overflow-x-auto">
 {`<Badge>Default</Badge>
 <Badge variant="success">Success</Badge>
 <Badge variant="warning">Warning</Badge>
@@ -58,7 +58,7 @@ export default function Home() {
 
       {/* Buttons */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Button</h2>
+        <h2 className="text-lg font-semibold text-default mb-4">Button</h2>
         <div className="flex flex-wrap gap-3">
           <Button>Primary</Button>
           <Button variant="secondary">Secondary</Button>
@@ -68,7 +68,7 @@ export default function Home() {
           <Button size="sm">Small</Button>
           <Button size="lg">Large</Button>
         </div>
-        <pre className="mt-3 p-3 bg-gray-50 rounded text-xs overflow-x-auto">
+        <pre className="mt-3 p-3 bg-bg-offset rounded text-xs overflow-x-auto">
 {`<Button>Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="danger">Danger</Button>
@@ -81,7 +81,7 @@ export default function Home() {
 
       {/* Input */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Input</h2>
+        <h2 className="text-lg font-semibold text-default mb-4">Input</h2>
         <div className="max-w-md space-y-4">
           <Input
             placeholder="Basic input"
@@ -114,7 +114,7 @@ export default function Home() {
             onChange={() => {}}
           />
         </div>
-        <pre className="mt-3 p-3 bg-gray-50 rounded text-xs overflow-x-auto">
+        <pre className="mt-3 p-3 bg-bg-offset rounded text-xs overflow-x-auto">
 {`<Input placeholder="Basic input" value={value} onChange={...} />
 <Input placeholder="With prefix" prefix="$" />
 <Input placeholder="With suffix" suffix="USD" />
@@ -125,7 +125,7 @@ export default function Home() {
 
       {/* Select */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Select</h2>
+        <h2 className="text-lg font-semibold text-default mb-4">Select</h2>
         <div className="max-w-md">
           <Select value={selectValue} onChange={(e) => setSelectValue(e.target.value)}>
             <option value="option1">Option 1</option>
@@ -133,7 +133,7 @@ export default function Home() {
             <option value="option3">Option 3</option>
           </Select>
         </div>
-        <pre className="mt-3 p-3 bg-gray-50 rounded text-xs overflow-x-auto">
+        <pre className="mt-3 p-3 bg-bg-offset rounded text-xs overflow-x-auto">
 {`<Select value={value} onChange={...}>
   <option value="option1">Option 1</option>
   <option value="option2">Option 2</option>
@@ -143,7 +143,7 @@ export default function Home() {
 
       {/* Textarea */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Textarea</h2>
+        <h2 className="text-lg font-semibold text-default mb-4">Textarea</h2>
         <div className="max-w-md">
           <Textarea
             placeholder="Enter your message..."
@@ -152,14 +152,14 @@ export default function Home() {
             onChange={(e) => setTextareaValue(e.target.value)}
           />
         </div>
-        <pre className="mt-3 p-3 bg-gray-50 rounded text-xs overflow-x-auto">
+        <pre className="mt-3 p-3 bg-bg-offset rounded text-xs overflow-x-auto">
 {`<Textarea placeholder="Enter your message..." rows={3} value={value} onChange={...} />`}
         </pre>
       </section>
 
       {/* Toggle */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Toggle</h2>
+        <h2 className="text-lg font-semibold text-default mb-4">Toggle</h2>
         <div className="space-y-3">
           <Toggle
             checked={toggleChecked}
@@ -178,7 +178,7 @@ export default function Home() {
             label="Disabled toggle"
           />
         </div>
-        <pre className="mt-3 p-3 bg-gray-50 rounded text-xs overflow-x-auto">
+        <pre className="mt-3 p-3 bg-bg-offset rounded text-xs overflow-x-auto">
 {`<Toggle checked={checked} onChange={...} label="Enable notifications" />
 <Toggle checked={true} label="Always on" />
 <Toggle checked={false} disabled label="Disabled toggle" />`}
@@ -187,7 +187,7 @@ export default function Home() {
 
       {/* ToggleCard */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">ToggleCard</h2>
+        <h2 className="text-lg font-semibold text-default mb-4">ToggleCard</h2>
         <div className="max-w-md">
           <ToggleCardGroup label="Select an option">
             <ToggleCard
@@ -204,7 +204,7 @@ export default function Home() {
             />
           </ToggleCardGroup>
         </div>
-        <pre className="mt-3 p-3 bg-gray-50 rounded text-xs overflow-x-auto">
+        <pre className="mt-3 p-3 bg-bg-offset rounded text-xs overflow-x-auto">
 {`<ToggleCardGroup label="Select an option">
   <ToggleCard
     title="Option A"
@@ -224,7 +224,7 @@ export default function Home() {
 
       {/* Tooltip */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Tooltip</h2>
+        <h2 className="text-lg font-semibold text-default mb-4">Tooltip</h2>
         <div className="flex flex-wrap gap-6">
           <Tooltip content="This is a tooltip on top" placement="top">
             <Button variant="secondary">Hover me (top)</Button>
@@ -236,7 +236,7 @@ export default function Home() {
             <Button variant="secondary">Minimal tooltip</Button>
           </Tooltip>
         </div>
-        <pre className="mt-3 p-3 bg-gray-50 rounded text-xs overflow-x-auto">
+        <pre className="mt-3 p-3 bg-bg-offset rounded text-xs overflow-x-auto">
 {`<Tooltip content="This is a tooltip" placement="top">
   <Button>Hover me</Button>
 </Tooltip>
@@ -248,18 +248,18 @@ export default function Home() {
 
       {/* Table */}
       <section>
-        <h2 className="text-lg font-semibold text-gray-800 mb-4">Table</h2>
+        <h2 className="text-lg font-semibold text-default mb-4">Table</h2>
         <Table
           columns={tableColumns}
           data={tableData}
           onRowClick={(item) => alert(`Clicked: ${item.name}`)}
           mobileRow={(item, onClick) => (
             <div
-              className="p-4 border-b border-gray-200 hover:bg-gray-50 cursor-pointer"
+              className="p-4 border-b border-border hover:bg-bg-hover cursor-pointer"
               onClick={onClick}
             >
               <div className="font-medium">{item.name}</div>
-              <div className="text-sm text-gray-500">{item.email}</div>
+              <div className="text-sm text-subdued">{item.email}</div>
               <div className="flex justify-between mt-2">
                 <Badge variant={item.status === 'Active' ? 'success' : 'default'}>{item.status}</Badge>
                 <span className="font-medium">{item.amount}</span>
@@ -267,7 +267,7 @@ export default function Home() {
             </div>
           )}
         />
-        <pre className="mt-3 p-3 bg-gray-50 rounded text-xs overflow-x-auto">
+        <pre className="mt-3 p-3 bg-bg-offset rounded text-xs overflow-x-auto">
 {`const columns = [
   { key: 'name', header: 'Name', width: 'grow' },
   { key: 'email', header: 'Email' },

@@ -29,7 +29,7 @@ export const Toggle = ({
         />
       </div>
       {label && (
-        <span className="text-sm font-medium text-gray-700">{label}</span>
+        <span className="text-sm font-medium text-default">{label}</span>
       )}
     </label>
   );

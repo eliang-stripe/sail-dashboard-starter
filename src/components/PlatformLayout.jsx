@@ -5,13 +5,13 @@ import { Icon } from '../icons/SailIcons';
 export const NavItem = ({ icon, label, active, highlighted, to }) => {
   const isHighlighted = active || highlighted;
   const content = (
-    <div className="flex items-center space-x-2 h-[30px] px-1 rounded-md cursor-pointer hover:bg-gray-50">
+    <div className="flex items-center space-x-2 h-[30px] px-1 rounded-md cursor-pointer hover:bg-bg-hover">
       {icon && (
-        <div className={`w-6 h-6 flex items-center justify-center ${isHighlighted ? 'text-[#533AFD]' : 'text-gray-500'}`}>
+        <div className={`w-6 h-6 flex items-center justify-center ${isHighlighted ? 'text-brand' : 'text-subdued'}`}>
           {icon}
         </div>
       )}
-      <span className={`text-sm flex-1 ${isHighlighted ? 'text-[#533AFD] font-medium' : 'text-gray-700'}`}>{label}</span>
+      <span className={`text-sm flex-1 ${isHighlighted ? 'text-brand font-medium' : 'text-default'}`}>{label}</span>
     </div>
   );
 
@@ -29,7 +29,7 @@ export const SubNavItem = ({ label, active, highlighted, onClick, to }) => {
     >
       {/* Empty spacer to match icon width */}
       <div className="w-6 h-6 flex-shrink-0" />
-      <span className={`text-sm ${highlighted ? 'text-[#533AFD] font-medium' : 'text-gray-700'}`}>{label}</span>
+      <span className={`text-sm ${highlighted ? 'text-brand font-medium' : 'text-default'}`}>{label}</span>
     </div>
   );
 
@@ -41,7 +41,7 @@ export const SubNavItem = ({ label, active, highlighted, onClick, to }) => {
 
 export const SectionHeading = ({ label }) => (
   <div className="h-[26px] flex items-center">
-    <span className="text-xs text-gray-500 uppercase tracking-wider">
+    <span className="text-xs text-subdued uppercase tracking-wider">
       {label}
     </span>
   </div>
@@ -54,15 +54,15 @@ const ExpandableNavItem = ({ icon, label, children, defaultExpanded = false }) =
   return (
     <div>
       <div
-        className="flex items-center space-x-2 h-[30px] px-1 rounded-md hover:bg-gray-50 cursor-pointer relative"
+        className="flex items-center space-x-2 h-[30px] px-1 rounded-md hover:bg-bg-hover cursor-pointer relative"
         onClick={() => setIsExpanded(!isExpanded)}
       >
         {icon && (
-          <div className="w-6 h-6 flex items-center justify-center text-gray-500">
+          <div className="w-6 h-6 flex items-center justify-center text-subdued">
             {icon}
           </div>
         )}
-        <span className="text-sm text-gray-700 flex-1">{label}</span>
+        <span className="text-sm text-default flex-1">{label}</span>
         <div className="w-6 h-6 flex items-center justify-center">
           <Icon name="chevronDown" size="xxsmall" fill="currentColor" className={`w-[8px] h-[8px] transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
         </div>
@@ -83,12 +83,12 @@ export const Sidebar = ({ highlightedItem = 'financialAccounts' }) => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className="left-0 top-0 w-[250px] bg-white border-r border-gray-200 flex flex-col h-screen z-10 shrink-0">
+    <div className="left-0 top-0 w-[250px] bg-white border-r border-border flex flex-col h-screen z-10 shrink-0">
       {/* Account Section - Cloudbeds branding */}
-      <div className="h-[60px] px-5 flex items-center border-gray-200">
+      <div className="h-[60px] px-5 flex items-center border-border">
         <div className="flex items-center space-x-2">
           <img src="/cloudbeds-icon.png" alt="Cloudbeds" className="w-6 h-6 rounded" />
-          <span className="font-semibold text-gray-800 text-sm">
+          <span className="font-semibold text-default text-sm">
             Cloudbeds
           </span>
         </div>
@@ -140,12 +140,12 @@ export const Sidebar = ({ highlightedItem = 'financialAccounts' }) => {
 };
 
 export const Header = ({ sticky = false, settingsHighlighted = false }) => (
-  <div className={`h-[60px] bg-white border-gray-200 px-6 flex items-center justify-between z-10 ${sticky ? 'sticky top-0 w-full' : 'fixed top-0 max-w-[1280px] w-[calc(100%-266px)]'}`}>
+  <div className={`h-[60px] bg-white border-border px-6 flex items-center justify-between z-10 ${sticky ? 'sticky top-0 w-full' : 'fixed top-0 max-w-[1280px] w-[calc(100%-266px)]'}`}>
     {/* Search */}
     <div className="flex-1 max-w-[500px]">
-      <div className="flex items-center space-x-2 px-3 py-2 bg-gray-50 rounded-lg transition-all hover:bg-gray-100 cursor-pointer">
+      <div className="flex items-center space-x-2 px-3 py-2 bg-bg-hover rounded-lg transition-all hover:bg-bg-offset cursor-pointer">
         <Icon name="search" size="small" fill="currentColor" />
-        <span className="text-sm text-gray-500">Search</span>
+        <span className="text-sm text-subdued">Search</span>
       </div>
     </div>
 
