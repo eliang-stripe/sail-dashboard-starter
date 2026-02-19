@@ -131,7 +131,6 @@ export const Sidebar = ({ sandboxMode = false }) => {
                 to="/connect/accounts"
                 highlighted={isActive('/connect/accounts')}
               />
-              <SubNavItem label="Accounts to review" />
               <SubNavItem
                 label="Embedded finance"
                 to="/embedded-finance"
