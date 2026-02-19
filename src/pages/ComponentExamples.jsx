@@ -7,6 +7,8 @@ import Switch from '../components/Switch';
 import Toggle, { ToggleGroup } from '../components/Toggle';
 import Tooltip from '../components/Tooltip';
 import Dialog from '../components/Dialog';
+import Breadcrumb from '../components/Breadcrumb';
+import Tabs from '../components/Tabs';
 import { Icon } from '../icons/SailIcons';
 
 // Reusable component section with code dialog
@@ -25,7 +27,7 @@ const ComponentSection = ({ title, children, code }) => {
           View code
         </button>
       </div>
-      <div className="bg-offset/50 flex p-12 rounded-xl border border-border items-center justify-center">
+      <div className="flex p-12 rounded-xl border border-border items-center justify-center">
         {children}
       </div>
       <Dialog
@@ -51,6 +53,7 @@ export default function ComponentExamples() {
   const [selectedRadio, setSelectedRadio] = useState('option1');
   const [selectedCard, setSelectedCard] = useState('card1');
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [activeTabMd, setActiveTabMd] = useState('tab1');
 
   // Sample data for table
   const tableColumns = [
@@ -72,6 +75,78 @@ export default function ComponentExamples() {
 
   return (
     <div className="space-y-12">
+      <ComponentSection
+        title="Breadcrumb"
+        code={`// With current page
+<Breadcrumb
+  pages={[
+    { label: 'Home', to: '/' },
+    { label: 'Connect', to: '/connect' },
+  ]}
+  currentPage="Connected accounts"
+/>
+
+// Without current page
+<Breadcrumb
+  pages={[
+    { label: 'Home', to: '/' },
+    { label: 'Connect', to: '/connect' },
+  ]}
+  showCurrentPage={false}
+/>`}
+      >
+        <div className="flex flex-col gap-6">
+          <Breadcrumb
+            pages={[{ label: 'Page at the root', to: '/' }]}
+            currentPage="The current page"
+          />
+          <Breadcrumb
+            pages={[
+              { label: 'Page at the root', to: '/' },
+              { label: 'Page one level deep', to: '/' },
+            ]}
+            currentPage="The current page"
+            showCurrentPage={false}
+          />
+        </div>
+      </ComponentSection>
+
+      <ComponentSection
+        title="Tabs"
+        code={`const tabs = [
+  { key: 'tab1', label: 'Tab 1' },
+  { key: 'tab2', label: 'Tab 2' },
+  { key: 'tab3', label: 'Tab 3' },
+];
+
+// Sizes: sm, md (default), lg
+<Tabs
+  tabs={tabs}
+  activeTab={activeTab}
+  onTabChange={setActiveTab}
+  size="md"
+>
+  {activeTab === 'tab1' && <div>Tab 1 content</div>}
+  {activeTab === 'tab2' && <div>Tab 2 content</div>}
+</Tabs>`}
+      >
+        <div className="w-full">
+          <Tabs
+            tabs={[
+              { key: 'tab1', label: 'Tab 1' },
+              { key: 'tab2', label: 'Tab 2' },
+              { key: 'tab3', label: 'Tab 3' },
+              { key: 'tab4', label: 'Tab 4' },
+              { key: 'tab5', label: 'Tab 5' },
+            ]}
+            activeTab={activeTabMd}
+            onTabChange={setActiveTabMd}
+          >
+            <p className="p-4 border border-border rounded-lg bg-offset text-sm text-subdued">Content for {activeTabMd}</p>
+          </Tabs>
+        </div>
+      </ComponentSection>
+
       <ComponentSection
         title="Badge"
         code={`<Badge>Default</Badge>

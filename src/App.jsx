@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Sidebar, Header } from './components/PlatformLayout';
+import { Sidebar, Header, SandboxBanner, SANDBOX_HEIGHT } from './components/PlatformLayout';
 import ControlPanel from './components/ControlPanel';
 
 // Pages
@@ -15,21 +15,30 @@ import EmbeddedFinance from './pages/EmbeddedFinance';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [sandboxMode, setSandboxMode] = useState(false);
 
   return (
     <div className={`min-h-screen bg-surface ${darkMode ? 'dark' : ''}`}>
-      <ControlPanel darkMode={darkMode} onToggleDarkMode={() => setDarkMode(!darkMode)} />
+      <ControlPanel
+        darkMode={darkMode}
+        onToggleDarkMode={() => setDarkMode(!darkMode)}
+        sandboxMode={sandboxMode}
+        onToggleSandboxMode={() => setSandboxMode(!sandboxMode)}
+      />
 
       <div className="flex flex-col min-h-screen">
         <div className="flex flex-row flex-1 bg-surface">
+          {/* Sandbox Banner */}
+          {sandboxMode && <SandboxBanner />}
+
           {/* Sidebar */}
-          <Sidebar />
+          <Sidebar sandboxMode={sandboxMode} />
 
           {/* Header - fixed */}
-          <Header />
+          <Header sandboxMode={sandboxMode} />
 
           {/* Main Content Area - offset for fixed sidebar and header */}
-          <div className="ml-sidebar-width pt-[60px] flex flex-col min-w-0 flex-1 relative scrollbar-auto">
+          <div className="ml-sidebar-width flex flex-col min-w-0 flex-1 relative scrollbar-auto" style={{ paddingTop: 60 + (sandboxMode ? SANDBOX_HEIGHT : 0) }}>
             <div className="max-w-[1280px] w-full mx-auto">
 
               {/* Content */}

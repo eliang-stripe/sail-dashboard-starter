@@ -111,7 +111,7 @@ const Input = ({
           onChange={handleChange}
           placeholder={placeholder}
           disabled={disabled}
-          className={`w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4 text-[16px] sm:text-sm text-default placeholder:text-placeholder disabled:opacity-60 disabled:bg-gray-100 ${leftPadding} ${rightPadding} ${error ? 'border-critical' : ''} ${className}`}
+          className={`w-full px-3 py-2 border border-border rounded-md bg-surface focus:outline-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4 text-[16px] sm:text-sm text-default placeholder:text-placeholder disabled:opacity-60 disabled:bg-gray-100 ${leftPadding} ${rightPadding} ${error ? 'border-critical' : ''} ${className}`}
           {...props}
         />
         {suffix && (
@@ -159,7 +159,7 @@ export const Textarea = ({
       onChange={onChange}
       placeholder={placeholder}
       rows={rows}
-      className={`w-full px-3 py-2 bg-background text-default placeholder:text-placeholder border border-border rounded-md focus:outline-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4 text-[16px] sm:text-sm resize-none ${error ? 'border-critical' : ''} ${className}`}
+      className={`w-full px-3 py-2 bg-background text-default bg-surface placeholder:text-placeholder border border-border rounded-md focus:outline-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4 text-[16px] sm:text-sm resize-none ${error ? 'border-critical' : ''} ${className}`}
       {...props}
     />
   );
@@ -210,7 +210,7 @@ export const Select = ({
     <select
       value={value}
       onChange={onChange}
-      className={`border border-border rounded-md focus:outline-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4 appearance-none bg-no-repeat bg-background text-default placeholder:text-placeholder disabled:opacity-50 disabled:bg-gray-100 ${sizes[size]} ${error ? 'border-critical' : ''} ${className}`}
+      className={`border border-border rounded-md focus:outline-none bg-surface focus:ring-[rgba(8,142,249,0.36)] focus:ring-4 appearance-none bg-no-repeat bg-background text-default placeholder:text-placeholder disabled:opacity-50 disabled:bg-gray-100 ${sizes[size]} ${error ? 'border-critical' : ''} ${className}`}
       style={{
         backgroundImage: `url("${selectChevronUrl}")`,
         backgroundPosition: chevronPositions[size],

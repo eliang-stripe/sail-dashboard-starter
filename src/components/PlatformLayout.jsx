@@ -80,7 +80,7 @@ const ExpandableNavItem = ({ icon, label, children, sectionId, expandedSection, 
   );
 };
 
-export const Sidebar = () => {
+export const Sidebar = ({ sandboxMode = false }) => {
   const location = useLocation();
   const [expandedSection, setExpandedSection] = React.useState('connect');
 
@@ -88,7 +88,7 @@ export const Sidebar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className="fixed left-0 top-0 w-sidebar-width bg-surface border-r border-border flex flex-col h-screen z-10 shrink-0">
+    <div className={`fixed left-0 w-sidebar-width bg-surface border-r border-border flex flex-col z-10 shrink-0 ${sandboxMode ? 'rounded-tl-xl overflow-hidden' : ''}`} style={{ top: sandboxMode ? SANDBOX_HEIGHT : 0, height: sandboxMode ? `calc(100vh - ${SANDBOX_HEIGHT}px)` : '100vh' }}>
 
       {/* Navigation */}
       <div className="flex-1 px-4 py-4 space-y-7">
@@ -185,14 +185,41 @@ export const Sidebar = () => {
   );
 };
 
-export const Header = ({ settingsHighlighted = false }) => (
-  <div className="fixed top-0 left-sidebar-width right-0 h-[60px] bg-surface border-border z-10">
+const SANDBOX_HEIGHT = 44;
+
+export const SandboxBanner = () => (
+  <>
+    <div
+      className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-5 bg-[#0E3359] text-white"
+      style={{ height: SANDBOX_HEIGHT }}
+    >
+      <span className="text-sm font-medium">Sandbox</span>
+      <span className="absolute left-1/2 -translate-x-1/2 text-sm text-white/80">
+        You're testing in a sandbox. Changes you make here don't affect your live account.
+      </span>
+    </div>
+    {/* Filler strip behind content for rounded corner reveal */}
+    <div
+      className="fixed left-0 right-0 bg-[#0E3359] z-[5]"
+      style={{ top: SANDBOX_HEIGHT, height: 16 }}
+    />
+  </>
+);
+
+export { SANDBOX_HEIGHT };
+
+export const Header = ({ sandboxMode = false }) => (
+  <div className={`fixed left-sidebar-width right-0 h-[60px] bg-surface border-border z-10 ${sandboxMode ? 'rounded-tr-xl overflow-hidden' : ''}`} style={{ top: sandboxMode ? SANDBOX_HEIGHT : 0 }}>
     <div className="max-w-[1280px] w-full h-full mx-auto px-8 flex items-center justify-between">
       {/* Search */}
-      <div className="flex-1 max-w-[500px]">
-        <div className="flex items-center space-x-2 px-3 py-2 bg-offset rounded-lg transition-all hover:bg-offset cursor-pointer">
-          <Icon name="search" size="small" fill="currentColor" className="text-icon-default" />
-          <span className="text-sm text-subdued">Search</span>
+      <div className="w-[360px] focus-within:w-[500px] transition-[width] duration-100 ease-in-out">
+        <div className="flex items-center space-x-2 px-3 py-2 bg-offset rounded-lg">
+          <Icon name="search" size="small" fill="currentColor" className="text-icon-default flex-shrink-0" />
+          <input
+            type="text"
+            placeholder="Search"
+            className="bg-transparent text-sm text-default placeholder:text-subdued outline-none w-full"
+          />
         </div>
       </div>
 

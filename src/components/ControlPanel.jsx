@@ -80,10 +80,10 @@ const DropZone = ({ snapSide, panelRef }) => {
 
 function useDragSnap() {
   const panelRef = useRef(null);
-  const [side, setSide] = useState('left');
+  const [side, setSide] = useState('right');
   const [dragging, setDragging] = useState(false);
   const [dragPos, setDragPos] = useState(null); // { left, bottom } during drag
-  const [snapTarget, setSnapTarget] = useState('left');
+  const [snapTarget, setSnapTarget] = useState('right');
   const dragStart = useRef(null);
   const didDrag = useRef(false);
 
@@ -182,7 +182,7 @@ const ContextDialog = ({ open, onClose }) => (
 
 // --- Main component ---
 
-export default function ControlPanel({ darkMode, onToggleDarkMode }) {
+export default function ControlPanel({ darkMode, onToggleDarkMode, sandboxMode, onToggleSandboxMode }) {
   const [minimized, setMinimized] = useState(false);
   const [contextOpen, setContextOpen] = useState(false);
   const { dragging, dragPos, snapTarget, restLeft, restBottom, panelRef, onPointerDown, didDrag } = useDragSnap();
@@ -213,6 +213,12 @@ export default function ControlPanel({ darkMode, onToggleDarkMode }) {
             checked={darkMode}
             onChange={onToggleDarkMode}
             label="Dark mode"
+            className="w-full"
+          />
+          <Switch
+            checked={sandboxMode}
+            onChange={onToggleSandboxMode}
+            label="Sandbox mode"
             className="w-full"
           />
           <ControlPanelButton onClick={() => setContextOpen(true)}>
