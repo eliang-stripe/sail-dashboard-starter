@@ -11,6 +11,7 @@ import Directory from './pages/Directory';
 import ProductCatalog from './pages/ProductCatalog';
 import ConnectOverview from './pages/ConnectOverview';
 import ConnectedAccounts from './pages/ConnectedAccounts';
+import ConnectedAccountDetail from './pages/ConnectedAccountDetail';
 import EmbeddedFinance from './pages/EmbeddedFinance';
 
 export default function App() {
@@ -50,6 +51,8 @@ export default function App() {
                 <Route path="/product-catalog" element={<ProductCatalog />} />
                 <Route path="/connect" element={<ConnectOverview />} />
                 <Route path="/connect/accounts" element={<ConnectedAccounts />} />
+                <Route path="/connect/accounts/:accountId" element={<ConnectedAccountDetail />} />
+                <Route path="/connect/accounts/:accountId/:tab" element={<ConnectedAccountDetail />} />
                 <Route path="/embedded-finance" element={<EmbeddedFinance />} />
               </Routes>
             </div>

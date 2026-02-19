@@ -153,7 +153,7 @@ export const Sidebar = ({ sandboxMode = false }) => {
               <SubNavItem
                 label="Connected accounts"
                 to="/connect/accounts"
-                highlighted={isActive('/connect/accounts')}
+                highlighted={location.pathname.startsWith('/connect/accounts')}
               />
               <SubNavItem
                 label="Embedded finance"
