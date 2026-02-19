@@ -10,15 +10,17 @@ export const FormField = ({
   className = '',
 }) => {
   return (
-    <div className={`${className}`}>
-      {label && (
-        <label className="block text-sm font-medium text-default">
-          {label}
-        </label>
-      )}
-      {description && (
-        <p className="text-xs text-subdued mb-1">{description}</p>
-      )}
+    <div className={`space-y-1 ${className}`}>
+      <div>
+        {label && (
+          <label className="block text-sm font-medium text-default">
+            {label}
+          </label>
+        )}
+        {description && (
+          <p className="text-xs text-subdued">{description}</p>
+        )}
+      </div>
       {children}
       {error && errorMessage && (
         <p className="text-xs text-critical">{errorMessage}</p>

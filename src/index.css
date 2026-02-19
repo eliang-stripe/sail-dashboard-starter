@@ -103,6 +103,12 @@
   --color-badge-info-border: #E2FBFE;
   --color-badge-info-text: #045AD0;
 
+  /* Tooltip (elevated surface in dark mode) */
+  --color-tooltip-surface: #ffffff;
+  --color-tooltip-border: #D8DEE4;
+  --color-tooltip-label-bg: #3C4F69;
+  --color-tooltip-label-text: #ffffff;
+
   /* Icon buttons */
   --color-icon-button-text: #9ca3af;
   --color-icon-button-hover-text: #4b5563;
@@ -206,6 +212,12 @@
   --color-badge-info-bg: #0a2a3a;
   --color-badge-info-border: #1a4060;
   --color-badge-info-text: #4d9fff;
+
+  /* Tooltip (elevated dark surface, matching pay-server darkMode.ts) */
+  --color-tooltip-surface: #2b3039;
+  --color-tooltip-border: #3e444f;
+  --color-tooltip-label-bg: #2b3039;
+  --color-tooltip-label-text: #eceef1;
 
   --color-icon-button-text: #6c7688;
   --color-icon-button-hover-text: #e4e6eb;
