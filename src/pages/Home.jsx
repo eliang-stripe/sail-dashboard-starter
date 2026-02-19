@@ -6,7 +6,7 @@ export default function Home() {
     <div className="p-8 space-y-12">
       <div className="max-w-[800px] flex items-center gap-2 p-4 rounded-lg bg-offset">
         <div className="flex-1">
-          <p className="text-sm font-medium text-default">Create a new repo using this template.</p>
+          <p className="text-sm font-medium text-default">To use this template, you can create a new repo on Github.</p>
         </div>
         <Button
           href="https://github.com/new?template_name=sail-dashboard-starter&template_owner=eliang-stripe"

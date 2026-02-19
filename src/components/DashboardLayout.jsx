@@ -112,7 +112,7 @@ export const Sidebar = ({ sandboxMode = false }) => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className={`fixed left-0 w-sidebar-width bg-surface border-r border-border flex flex-col z-10 shrink-0 ${sandboxMode ? 'rounded-tl-xl overflow-hidden' : ''}`} style={{ top: sandboxMode ? SANDBOX_HEIGHT : 0, height: sandboxMode ? `calc(100vh - ${SANDBOX_HEIGHT}px)` : '100vh' }}>
+    <div className={`fixed left-0 w-sidebar-width bg-surface border-r border-neutral-50 flex flex-col z-10 shrink-0 ${sandboxMode ? 'rounded-tl-xl overflow-hidden' : ''}`} style={{ top: sandboxMode ? SANDBOX_HEIGHT : 0, height: sandboxMode ? `calc(100vh - ${SANDBOX_HEIGHT}px)` : '100vh' }}>
 
       {/* Navigation */}
       <div className="flex-1 px-4 py-4 space-y-7">
@@ -259,7 +259,7 @@ export const Header = ({ sandboxMode = false }) => {
         {/* Actions */}
         <div className="flex items-center space-x-4">
           {/* App Dock */}
-          <div className="flex items-center gap-0.5 px-px py-px border border-border rounded-full">
+          <div className="flex items-center gap-0.5 px-px py-px border border-neutral-50 rounded-full">
             <HeaderButton>
               <DiamondAppIcon />
             </HeaderButton>
@@ -270,22 +270,22 @@ export const Header = ({ sandboxMode = false }) => {
               <ZapAppIcon />
             </HeaderButton>
             <HeaderButton className="text-icon-default">
-              <Icon name="apps" size="small" fill="currentColor" />
+              <Icon name="apps" size="small" />
             </HeaderButton>
           </div>
 
           <div className="flex items-center space-x-1.5">
             <HeaderButton>
-              <Icon name="help" size="small" fill="currentColor" />
+              <Icon name="help" size="small" />
             </HeaderButton>
             <HeaderButton>
-              <Icon name="notifications" size="small" fill="currentColor" />
+              <Icon name="notifications" size="small" />
             </HeaderButton>
             <HeaderButton>
-              <Icon name="settings" size="small" fill="currentColor" />
+              <Icon name="settings" size="small" />
             </HeaderButton>
             <HeaderButton>
-              <Icon name="addCircleFilled" size="medium" fill="currentColor" />
+              <Icon name="addCircleFilled" size="medium" className="text-brand-500" />
             </HeaderButton>
           </div>
         </div>
