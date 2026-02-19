@@ -62,7 +62,7 @@ const DropZone = ({ snapSide, panelRef }) => {
       <div
         className={`z-[99] rounded-lg transition-all duration-200 ${isLeftActive
           ? 'border-2 border-brand bg-brand/5'
-          : 'border border-border bg-offset border-dashed'
+          : 'border border-border bg-offset/40 border-dashed'
           }`}
         style={{ ...shared, left: leftPos }}
       />
@@ -70,7 +70,7 @@ const DropZone = ({ snapSide, panelRef }) => {
       <div
         className={`z-[99] rounded-lg transition-all duration-200 ${!isLeftActive
           ? 'border-2 border-brand bg-brand/5'
-          : 'border border-border bg-offset border-dashed'
+          : 'border border-border bg-offset/40 backdrop-blur-sm border-dashed'
           }`}
         style={{ ...shared, left: rightPos }}
       />
@@ -84,16 +84,23 @@ function useDragSnap() {
   const [dragging, setDragging] = useState(false);
   const [dragPos, setDragPos] = useState(null); // { left, bottom } during drag
   const [snapTarget, setSnapTarget] = useState('right');
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const dragStart = useRef(null);
   const didDrag = useRef(false);
 
+  useEffect(() => {
+    const onResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   const getSnapSide = (left) => {
     const panelCenter = left + PANEL_WIDTH / 2;
-    return panelCenter < window.innerWidth / 2 ? 'left' : 'right';
+    return panelCenter < windowWidth / 2 ? 'left' : 'right';
   };
 
   const getSnapLeft = (s) =>
-    s === 'left' ? MARGIN : window.innerWidth - PANEL_WIDTH - MARGIN;
+    s === 'left' ? MARGIN : windowWidth - PANEL_WIDTH - MARGIN;
 
   const onPointerDown = useCallback((e) => {
     if (e.target.closest('button, input, label, [role="switch"]')) return;

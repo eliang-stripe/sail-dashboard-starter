@@ -34,7 +34,7 @@ const ComponentSection = ({ title, children, code }) => {
         open={showCode}
         onClose={() => setShowCode(false)}
         title={`${title} Code`}
-        size="xlarge"
+        size="medium"
       >
         <div className="bg-gray-100 p-5 rounded-lg overflow-x-auto">
           <pre className="text-xs text-gray-800 font-mono whitespace-pre">{code}</pre>
