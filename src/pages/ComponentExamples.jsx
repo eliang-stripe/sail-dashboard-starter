@@ -17,8 +17,8 @@ const ComponentSection = ({ title, children, code }) => {
 
   return (
     <section className="max-w-[800px]">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold text-default">{title}</h2>
+      <div className="flex items-center justify-between mb-2">
+        <h2 className="text-lg font-semibold text-default">{title}</h2>
         <button
           onClick={() => setShowCode(true)}
           className="text-sm text-brand hover:text-button-primary-pressed transition-colors cursor-pointer flex items-center gap-1"
@@ -27,7 +27,7 @@ const ComponentSection = ({ title, children, code }) => {
           View code
         </button>
       </div>
-      <div className="flex p-12 rounded-xl border border-border items-center justify-center">
+      <div className="flex p-10 rounded-xl border border-border items-center justify-center">
         {children}
       </div>
       <Dialog

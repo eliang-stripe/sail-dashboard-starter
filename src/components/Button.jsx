@@ -9,6 +9,7 @@ export const Button = ({
   disabled = false,
   className = '',
   icon,
+  href,
   ...props
 }) => {
   const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-md transition-colors duration-200 focus:outline-none leading-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4';
@@ -32,15 +33,35 @@ export const Button = ({
     lg: 'small',
   };
 
+  const combinedClassName = `${baseStyles} ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-60 pointer-events-none' : 'cursor-pointer'} ${className}`;
+
+  const content = (
+    <>
+      {icon && <Icon name={icon} size={iconSizes[size]} fill="currentColor" className={children ? 'mr-1.5' : ''} />}
+      {children}
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={combinedClassName}
+        {...props}
+      >
+        {content}
+      </a>
+    );
+  }
+
   return (
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${disabled ? 'opacity-60' : 'cursor-pointer'} ${className}`}
+      className={combinedClassName}
       {...props}
     >
-      {icon && <Icon name={icon} size={iconSizes[size]} fill="currentColor" className={children ? 'mr-1.5' : ''} />}
-      {children}
+      {content}
     </button>
   );
 };

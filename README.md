@@ -26,7 +26,7 @@ Visit `http://localhost:5173` to see the dashboard with component examples.
 ```
 src/
 ├── components/
-│   ├── PlatformLayout.jsx   # Sidebar, Header, NavItem, SubNavItem
+│   ├── DashboardLayout.jsx   # Sidebar, Header, NavItem, SubNavItem
 │   ├── Badge.jsx            # Status badges
 │   ├── Button.jsx           # Primary, secondary, danger buttons
 │   ├── Dialog.jsx           # Modal dialogs
@@ -113,7 +113,7 @@ import MyPage from './pages/MyPage';
 <Route path="/my-page" element={<MyPage />} />
 ```
 
-3. Add navigation item in `src/components/PlatformLayout.jsx`:
+3. Add navigation item in `src/components/DashboardLayout.jsx`:
 
 ```jsx
 <NavItem

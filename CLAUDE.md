@@ -26,7 +26,7 @@ Both header and content share the same max-width so they align visually. The roo
 
 ### Key Files
 
-- **`src/components/PlatformLayout.jsx`**: Sidebar, Header, NavItem, SubNavItem, ExpandableNavItem
+- **`src/components/DashboardLayout.jsx`**: Sidebar, Header, NavItem, SubNavItem, ExpandableNavItem
 - **`src/components/ControlPanel.jsx`**: Floating prototype controls panel (dark mode toggle, context dialog, draggable)
 - **`src/icons/SailIcons.jsx`**: SVG icon system with sizes: xxsmall(12px)/xsmall(14px)/small(16px)/medium(20px)/large(24px)
 - **`src/index.css`**: Tailwind CSS 4 `@theme` block with all color tokens + dark mode overrides
@@ -80,7 +80,7 @@ Available components in `src/components/`:
 
 1. Create page file in `src/pages/`
 2. Add route in `src/App.jsx`
-3. Add NavItem/SubNavItem in `src/components/PlatformLayout.jsx` with `to` prop and `isActive()` check
+3. Add NavItem/SubNavItem in `src/components/DashboardLayout.jsx` with `to` prop and `isActive()` check
 
 ### Tech Stack
 

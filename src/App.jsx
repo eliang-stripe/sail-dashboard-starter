@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Sidebar, Header, SandboxBanner, SANDBOX_HEIGHT } from './components/PlatformLayout';
+import { Sidebar, Header, SandboxBanner, SANDBOX_HEIGHT } from './components/DashboardLayout';
 import ControlPanel from './components/ControlPanel';
 
 // Pages
