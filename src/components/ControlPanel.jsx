@@ -45,7 +45,7 @@ const ControlPanelBody = ({ minimized, children }) => (
 
 // --- Drag constants ---
 
-const MARGIN = 8;
+const MARGIN = 12;
 const PANEL_WIDTH = 230;
 
 const DropZone = ({ snapSide, panelRef }) => {

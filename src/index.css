@@ -233,6 +233,17 @@ body:has(.dark) {
   background-color: #14171d;
 }
 
+/* Floating overlay scrollbar — uses standard properties only.
+   Avoids ::-webkit-scrollbar which forces classic (non-overlay) mode. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.dark * {
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
 /* Hide scrollbar while still allowing scroll */
 .scrollbar-hide {
   -ms-overflow-style: none;
@@ -242,36 +253,6 @@ body:has(.dark) {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-}
-
-/* macOS-style auto-hiding scrollbars */
-.scrollbar-auto {
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
-  scrollbar-gutter: stable;
-}
-
-.scrollbar-auto:hover {
-  scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
-}
-
-.scrollbar-auto::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.scrollbar-auto::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.scrollbar-auto::-webkit-scrollbar-thumb {
-  background: transparent;
-  border-radius: 4px;
-  transition: background 0.2s;
-}
-
-.scrollbar-auto:hover::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
 }
 
 /* Dialog animations */
