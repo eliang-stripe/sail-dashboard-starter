@@ -116,9 +116,9 @@
 }
 
 @layer base {
+
   html {
-    /* font-size: 14px; */
-    /* Changes the base rem value to 10px */
+    scrollbar-gutter: stable;
   }
 }
 
@@ -231,17 +231,6 @@ body {
 
 body:has(.dark) {
   background-color: #14171d;
-}
-
-/* Floating overlay scrollbar — uses standard properties only.
-   Avoids ::-webkit-scrollbar which forces classic (non-overlay) mode. */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
-}
-
-.dark * {
-  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
 }
 
 /* Hide scrollbar while still allowing scroll */

@@ -191,7 +191,7 @@ export default function ConnectedAccountDetail() {
   return (
     <div>
       {/* Fixed header: breadcrumbs + account info + tabs */}
-      <div ref={headerRef} className="fixed top-[60px] left-sidebar-width right-0 z-10 bg-surface">
+      <div ref={headerRef} className="fixed top-[60px] left-sidebar-width right-0 z-[5] bg-surface">
         <div className="max-w-[1280px] mx-auto px-8">
           {/* Breadcrumbs */}
           <div className="pt-4 mb-2">

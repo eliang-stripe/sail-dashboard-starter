@@ -49,15 +49,15 @@ const Dialog = ({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [open, onClose]);
 
-  // Prevent body scroll when open
+  // Prevent body scroll when open, but keep scrollbar gutter to avoid layout shift
   useEffect(() => {
     if (isVisible) {
-      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [isVisible]);
 

@@ -39,7 +39,7 @@ export default function App() {
           <Header sandboxMode={sandboxMode} />
 
           {/* Main Content Area - offset for fixed sidebar and header */}
-          <div className="ml-sidebar-width flex flex-col min-w-0 flex-1 relative pr-2" style={{ paddingTop: 60 + (sandboxMode ? SANDBOX_HEIGHT : 0) }}>
+          <div className="ml-sidebar-width flex flex-col min-w-0 flex-1 relative" style={{ paddingTop: 60 + (sandboxMode ? SANDBOX_HEIGHT : 0) }}>
             <div className="max-w-[1280px] w-full mx-auto">
 
               {/* Content */}

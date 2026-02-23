@@ -45,13 +45,11 @@ const ControlPanelBody = ({ minimized, children }) => (
 
 // --- Drag constants ---
 
-const MARGIN = 12;
+const MARGIN = 8;
 const PANEL_WIDTH = 230;
 
 const DropZone = ({ snapSide, panelRef }) => {
   const height = panelRef.current?.offsetHeight || 40;
-  const leftPos = MARGIN;
-  const rightPos = window.innerWidth - PANEL_WIDTH - MARGIN;
   const isLeftActive = snapSide === 'left';
 
   const shared = { bottom: MARGIN, width: PANEL_WIDTH, height, position: 'fixed' };
@@ -62,17 +60,17 @@ const DropZone = ({ snapSide, panelRef }) => {
       <div
         className={`z-[99] rounded-lg transition-all duration-200 ${isLeftActive
           ? 'border-2 border-brand bg-brand/5'
-          : 'border border-border bg-offset/40 border-dashed'
+          : 'border-2 border-border bg-offset/40 border-dotted'
           }`}
-        style={{ ...shared, left: leftPos }}
+        style={{ ...shared, left: MARGIN, right: 'auto' }}
       />
       {/* Right drop zone */}
       <div
         className={`z-[99] rounded-lg transition-all duration-200 ${!isLeftActive
           ? 'border-2 border-brand bg-brand/5'
-          : 'border border-border bg-offset/40 backdrop-blur-sm border-dashed'
+          : 'border-2 border-border bg-offset/40 border-dotted'
           }`}
-        style={{ ...shared, left: rightPos }}
+        style={{ ...shared, right: MARGIN, left: 'auto' }}
       />
     </>
   );
@@ -82,25 +80,23 @@ function useDragSnap() {
   const panelRef = useRef(null);
   const [side, setSide] = useState('right');
   const [dragging, setDragging] = useState(false);
+  const [settling, setSettling] = useState(false); // animating to snap position via left
+  const [settlePos, setSettlePos] = useState(null); // { left, bottom } target for settle animation
   const [dragPos, setDragPos] = useState(null); // { left, bottom } during drag
   const [snapTarget, setSnapTarget] = useState('right');
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const dragStart = useRef(null);
   const didDrag = useRef(false);
 
-  useEffect(() => {
-    const onResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
-
   const getSnapSide = (left) => {
     const panelCenter = left + PANEL_WIDTH / 2;
-    return panelCenter < windowWidth / 2 ? 'left' : 'right';
+    const contentWidth = document.documentElement.clientWidth;
+    return panelCenter < contentWidth / 2 ? 'left' : 'right';
   };
 
-  const getSnapLeft = (s) =>
-    s === 'left' ? MARGIN : windowWidth - PANEL_WIDTH - MARGIN;
+  const getSnapLeft = (s) => {
+    const contentWidth = document.documentElement.clientWidth;
+    return s === 'left' ? MARGIN : contentWidth - PANEL_WIDTH - MARGIN;
+  };
 
   const onPointerDown = useCallback((e) => {
     if (e.target.closest('button, input, label, [role="switch"]')) return;
@@ -115,6 +111,7 @@ function useDragSnap() {
       panelBottom: window.innerHeight - rect.bottom,
     };
     didDrag.current = false;
+    setSettling(false);
     setDragging(true);
     setDragPos({ left: rect.left, bottom: window.innerHeight - rect.bottom });
     e.preventDefault();
@@ -140,6 +137,9 @@ function useDragSnap() {
       if (didDrag.current) {
         const newSide = snapTarget;
         setSide(newSide);
+        // Animate to snap position using left, then switch to right/left CSS after
+        setSettlePos({ left: getSnapLeft(newSide), bottom: MARGIN });
+        setSettling(true);
       }
       setDragging(false);
       setDragPos(null);
@@ -154,11 +154,14 @@ function useDragSnap() {
     };
   }, [dragging, snapTarget]);
 
-  // Resting position
-  const restLeft = getSnapLeft(side);
-  const restBottom = MARGIN;
+  // After settle animation completes, switch to CSS right/left resting position
+  useEffect(() => {
+    if (!settling) return;
+    const timer = setTimeout(() => setSettling(false), 250);
+    return () => clearTimeout(timer);
+  }, [settling]);
 
-  return { side, dragging, dragPos, snapTarget, restLeft, restBottom, panelRef, onPointerDown, didDrag };
+  return { side, dragging, settling, settlePos, dragPos, snapTarget, panelRef, onPointerDown, didDrag };
 }
 
 // --- Sections (add your own controls here) ---
@@ -192,11 +195,21 @@ const ContextDialog = ({ open, onClose }) => (
 export default function ControlPanel({ darkMode, onToggleDarkMode, sandboxMode, onToggleSandboxMode }) {
   const [minimized, setMinimized] = useState(false);
   const [contextOpen, setContextOpen] = useState(false);
-  const { dragging, dragPos, snapTarget, restLeft, restBottom, panelRef, onPointerDown, didDrag } = useDragSnap();
+  const { side, dragging, settling, settlePos, dragPos, snapTarget, panelRef, onPointerDown, didDrag } = useDragSnap();
 
-  const style = dragging && dragPos
-    ? { left: dragPos.left, bottom: dragPos.bottom, transition: 'none' }
-    : { left: restLeft, bottom: restBottom, transition: 'left 0.25s ease, bottom 0.25s ease' };
+  let style;
+  if (dragging && dragPos) {
+    // During drag: track pointer exactly, no transition
+    style = { left: dragPos.left, right: 'auto', bottom: dragPos.bottom, transition: 'none' };
+  } else if (settling && settlePos) {
+    // Settling: animate to snap position using left
+    style = { left: settlePos.left, right: 'auto', bottom: settlePos.bottom, transition: 'left 0.25s ease, bottom 0.25s ease' };
+  } else {
+    // Resting: use right/left CSS for scrollbar-proof positioning
+    style = side === 'right'
+      ? { right: MARGIN, left: 'auto', bottom: MARGIN }
+      : { left: MARGIN, right: 'auto', bottom: MARGIN };
+  }
 
   return (
     <>

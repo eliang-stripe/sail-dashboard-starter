@@ -7,7 +7,7 @@ const sizes = {
 const Tab = ({ label, active, onClick, size = 'md', isFirst = false }) => (
   <button
     onClick={onClick}
-    className={`relative font-medium cursor-pointer rounded-lg transition-colors ${sizes[size]} ${isFirst ? 'ml-[-8px]' : ''} ${active ? 'text-brand hover:bg-brand/10' : 'text-subdued hover:text-default hover:bg-offset'
+    className={`relative font-medium cursor-pointer rounded-lg shrink-0 whitespace-nowrap transition-colors ${sizes[size]} ${isFirst ? 'ml-[-8px]' : ''} ${active ? 'text-brand hover:bg-brand/10' : 'text-subdued hover:text-default hover:bg-offset'
       }`}
   >
     {label}

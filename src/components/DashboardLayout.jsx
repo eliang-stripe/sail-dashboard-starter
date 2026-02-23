@@ -242,7 +242,7 @@ export const Header = ({ sandboxMode = false }) => {
   );
 
   return (
-    <div className={`fixed left-sidebar-width right-2 h-[60px] bg-surface border-border z-10 ${sandboxMode ? 'rounded-tr-xl overflow-hidden' : ''}`} style={{ top: sandboxMode ? SANDBOX_HEIGHT : 0 }}>
+    <div className={`fixed left-sidebar-width right-0 h-[60px] bg-surface border-border z-10 ${sandboxMode ? 'rounded-tr-xl overflow-hidden' : ''}`} style={{ top: sandboxMode ? SANDBOX_HEIGHT : 0 }}>
       <div className="max-w-[1280px] w-full h-full mx-auto px-8 flex items-center justify-between">
         {/* Search */}
         <div className="w-[360px] focus-within:w-[500px] transition-[width] duration-100 ease-in-out">

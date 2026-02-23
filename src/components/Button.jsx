@@ -12,7 +12,7 @@ export const Button = ({
   href,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-[6px] transition-[background-color,box-shadow] duration-150 ease-[cubic-bezier(0,0.09,0.4,1)] hover:duration-0 focus:outline-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4';
+  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-[6px] shrink-0 whitespace-nowrap transition-[background-color,box-shadow] duration-150 ease-[cubic-bezier(0,0.09,0.4,1)] hover:duration-0 focus:outline-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4';
 
   // topShadow + keyline composited as box-shadow layers (matches pay-server's Sail Button)
   // topShadow sits above the keyline in the shadow stack, creating an inset shadow effect on the border

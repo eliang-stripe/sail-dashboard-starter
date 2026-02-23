@@ -15,8 +15,8 @@ const StatusTab = ({ label, count, active, onClick }) => (
   <button
     onClick={onClick}
     className={`flex flex-col items-start px-4 py-3 min-w-[150px] rounded-lg border transition-colors cursor-pointer ${active
-        ? 'border-brand border-2'
-        : 'border-border bg-surface hover:border-brand'
+      ? 'border-brand border-2'
+      : 'border-border bg-surface hover:border-brand'
       }`}
   >
     <span className={`text-base ${active ? 'text-brand font-semibold' : 'text-subdued'}`}>{label}</span>
@@ -101,7 +101,7 @@ export default function ConnectedAccounts() {
       </div>
 
       {/* Status Tabs */}
-      <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-1">
+      <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-1 scrollbar-hide">
         <StatusTab label="All" count={statusCounts.all} active={activeTab === 'all'} onClick={() => setActiveTab('all')} />
         <StatusTab label="Restricted" count={statusCounts.restricted} active={activeTab === 'restricted'} onClick={() => setActiveTab('restricted')} />
         <StatusTab label="Restricted soon" count={statusCounts.restricted_soon} active={activeTab === 'restricted_soon'} onClick={() => setActiveTab('restricted_soon')} />
