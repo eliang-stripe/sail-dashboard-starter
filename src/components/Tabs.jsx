@@ -20,7 +20,7 @@ const Tab = ({ label, active, onClick, size = 'md', isFirst = false }) => (
 const Tabs = ({ tabs, activeTab, onTabChange, size = 'md', children }) => {
   return (
     <div>
-      <div className="flex gap-2 border-b border-border">
+      <div className="flex gap-2 border-b border-border overflow-x-auto scrollbar-hide">
         {tabs.map((tab, index) => (
           <Tab
             key={tab.key}
