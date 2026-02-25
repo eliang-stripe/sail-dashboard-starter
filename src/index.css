@@ -1,13 +1,23 @@
 @import "tailwindcss";
 
 @theme {
+  /* Breakpoints */
+  --breakpoint-xsmall: 0px;
+  --breakpoint-small: 490px;
+  --breakpoint-medium: 768px;
+  --breakpoint-large: 1040px;
+  --breakpoint-xlarge: 1440px;
+
+  /* Font */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+
+  --font-mono: 'Source Code Pro', Menlo, Monaco, monospace;
+
   /* Layout */
   --spacing-sidebar-width: 250px;
 
-  /* Typography */
-  --text-xs: 12px;
-  --text-sm: 14px;
-  --text-base: 14px;
+  /* Remove default Tailwind text size utilities (use @utility text styles instead) */
+  --text-*: initial;
 
   /* Neutral scale (color.neutral) */
   --color-neutral-0: #ffffff;
@@ -115,13 +125,6 @@
   --color-icon-button-hover-bg: #f3f4f6;
 }
 
-@layer base {
-
-  html {
-    scrollbar-gutter: stable;
-  }
-}
-
 /* Dark mode overrides */
 .dark {
   /* Neutral scale */
@@ -224,9 +227,16 @@
   --color-icon-button-hover-bg: #252a37;
 }
 
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+}
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-sans);
 }
 
 body:has(.dark) {
@@ -287,4 +297,214 @@ body:has(.dark) {
     opacity: 0;
     transform: scale(0.95);
   }
+}
+
+/* Typography utilities */
+
+@utility text-display-xlarge {
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 64px;
+}
+
+@utility text-display-xlarge-subdued {
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 64px;
+}
+
+@utility text-display-large {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+@utility text-display-large-subdued {
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+@utility text-display-medium {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+@utility text-display-medium-subdued {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+@utility text-display-small {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+@utility text-display-small-subdued {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+@utility text-heading-xlarge {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+@utility text-heading-xlarge-subdued {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+@utility text-heading-large {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+@utility text-heading-large-subdued {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+@utility text-heading-medium {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@utility text-heading-medium-subdued {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@utility text-heading-small {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility text-heading-small-subdued {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility text-heading-xsmall {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+@utility text-heading-xsmall-subdued {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+@utility text-body-large {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+@utility text-body-large-emphasized {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+@utility text-body-medium {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility text-body-medium-emphasized {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility text-body-small {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@utility text-body-small-emphasized {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@utility text-label-large {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility text-label-large-emphasized {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@utility text-label-medium {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@utility text-label-medium-emphasized {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@utility text-label-small {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@utility text-label-small-emphasized {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@utility text-monospace-small-emphasized {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@utility text-monospace-small {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@utility text-monospace-xsmall-emphasized {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+@utility text-monospace-xsmall {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
 }

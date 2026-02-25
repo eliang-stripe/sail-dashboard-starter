@@ -1,8 +1,8 @@
 export default function ConnectOverview() {
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold text-default mb-2">Connect Overview</h1>
-      <p className="text-subdued">Edit <code className="bg-offset px-2 py-1 rounded text-sm">src/pages/ConnectOverview.jsx</code> to edit this page.</p>
+      <h1 className="text-heading-xlarge text-default mb-2">Connect</h1>
+      <p className="text-subdued">Edit <code className="text-monospace-small bg-offset px-2 py-1 rounded">src/pages/ConnectOverview.jsx</code> to edit this page.</p>
     </div>
   );
 }

@@ -35,7 +35,7 @@ export const NavItem = ({ icon, label, active, highlighted, to }) => {
           {icon}
         </div>
       )}
-      <span className={`text-sm flex-1 ${isHighlighted ? 'text-brand font-medium' : 'text-default'}`}>{label}</span>
+      <span className={`flex-1 ${isHighlighted ? 'text-label-medium-emphasized text-brand' : 'text-label-medium text-default'}`}>{label}</span>
     </div>
   );
 
@@ -53,7 +53,7 @@ export const SubNavItem = ({ label, active, highlighted, onClick, to }) => {
     >
       {/* Empty spacer to match icon width */}
       <div className="w-6 h-6 flex-shrink-0" />
-      <span className={`text-sm ${highlighted ? 'text-brand font-medium' : 'text-default'}`}>{label}</span>
+      <span className={highlighted ? 'text-label-medium-emphasized text-brand' : 'text-label-medium text-default'}>{label}</span>
     </div>
   );
 
@@ -65,7 +65,7 @@ export const SubNavItem = ({ label, active, highlighted, onClick, to }) => {
 
 export const SectionHeading = ({ label }) => (
   <div className="h-[26px] px-1 flex items-center">
-    <span className="text-xs text-subdued">
+    <span className="text-heading-xsmall-subdued text-subdued">
       {label}
     </span>
   </div>
@@ -86,7 +86,7 @@ const ExpandableNavItem = ({ icon, label, children, sectionId, expandedSection, 
             {icon}
           </div>
         )}
-        <span className="text-sm text-default flex-1">{label}</span>
+        <span className="text-body-small text-default flex-1">{label}</span>
         <div className="w-6 h-6 flex items-center justify-center">
           <Icon name="chevronDown" size="xxsmall" fill="currentColor" className={`size-[8px] transition-transform text-icon-default ${isExpanded ? 'rotate-180' : ''}`} />
         </div>
@@ -120,7 +120,7 @@ export const Sidebar = ({ sandboxMode = false }) => {
         {/* Account Section - Rocket Rides branding */}
         <div className="p-1.5 -mx-0.5 rounded-lg flex items-center border-border hover:bg-offset gap-2 duration-100">
           <img src="/rocketrides.svg" alt="Rocket Rides" className="size-[24px] rounded" />
-          <span className="font-semibold text-default text-sm">
+          <span className="text-default text-body-small-emphasized">
             Rocket Rides
           </span>
         </div>
@@ -154,11 +154,6 @@ export const Sidebar = ({ sandboxMode = false }) => {
                 label="Connected accounts"
                 to="/connect/accounts"
                 highlighted={location.pathname.startsWith('/connect/accounts')}
-              />
-              <SubNavItem
-                label="Embedded finance"
-                to="/embedded-finance"
-                highlighted={isActive('/embedded-finance')}
               />
               <SubNavItem label="Capital" />
             </ExpandableNavItem>
@@ -216,8 +211,8 @@ export const SandboxBanner = () => (
       className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-5 bg-[#0E3359] text-white"
       style={{ height: SANDBOX_HEIGHT }}
     >
-      <span className="text-sm font-medium">Sandbox</span>
-      <span className="absolute left-1/2 -translate-x-1/2 text-sm text-white/80">
+      <span className="text-body-small-emphasized">Sandbox</span>
+      <span className="absolute left-1/2 -translate-x-1/2 text-body-small text-white/80">
         You're testing in a sandbox. Changes you make here don't affect your live account.
       </span>
     </div>
@@ -251,7 +246,7 @@ export const Header = ({ sandboxMode = false }) => {
             <input
               type="text"
               placeholder="Search"
-              className="bg-transparent text-sm text-default placeholder:text-subdued outline-none w-full"
+              className="bg-transparent text-body-small text-default placeholder:text-subdued outline-none w-full"
             />
           </div>
         </div>

@@ -31,6 +31,29 @@ Both header and content share the same max-width so they align visually. The roo
 - **`src/icons/SailIcons.jsx`**: SVG icon system with sizes: xxsmall(12px)/xsmall(14px)/small(16px)/medium(20px)/large(24px)
 - **`src/index.css`**: Tailwind CSS 4 `@theme` block with all color tokens + dark mode overrides
 
+### Typography
+
+**Always use the custom `@utility` text styles** defined in `src/index.css` instead of default Tailwind text classes like `text-sm`, `text-xs`, `text-base`, `text-lg`, etc. Never use `font-semibold` or `font-medium` alongside text utilities — use the `-emphasized` or `-subdued` variant instead.
+
+| Category | Utilities |
+|----------|-----------|
+| Display | `text-display-xlarge`, `text-display-large`, `text-display-medium`, `text-display-small` (+ `-subdued` variants) |
+| Heading | `text-heading-xlarge` through `text-heading-xsmall` (+ `-subdued` variants) |
+| Body | `text-body-large`, `text-body-medium`, `text-body-small` (+ `-emphasized` variants) |
+| Label | `text-label-large`, `text-label-medium`, `text-label-small` (+ `-emphasized` variants) |
+
+### Breakpoints
+
+Custom breakpoints are defined in `src/index.css` — do not use default Tailwind breakpoints (`sm:`, `md:`, `lg:`, etc.).
+
+| Breakpoint | Width | Usage |
+|------------|-------|-------|
+| `xsmall:` | 0px | Base |
+| `small:` | 490px | Small screens |
+| `medium:` | 768px | Tablets |
+| `large:` | 1040px | Desktops |
+| `xlarge:` | 1440px | Wide screens |
+
 ### Theming
 
 **Always use semantic color tokens** from `src/index.css` instead of hardcoded values like `gray-500` or `#ccc`. This is critical for dark mode support — hardcoded colors will not adapt.

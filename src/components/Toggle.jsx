@@ -27,11 +27,11 @@ const Toggle = ({
           </div>
         )}
         <div className="flex-1">
-          <div className={`text-sm font-medium ${selected ? 'text-brand-500' : 'text-default'}`}>
+          <div className={`text-label-medium-emphasized ${selected ? 'text-brand-500' : 'text-default'}`}>
             {title}
           </div>
           {description && (
-            <div className="text-sm text-subdued">{description}</div>
+            <div className="text-body-small text-subdued">{description}</div>
           )}
         </div>
       </div>
@@ -51,7 +51,7 @@ export const ToggleGroup = ({ children, label, layout = 'vertical' }) => {
   return (
     <div>
       {label && (
-        <label className="block text-sm font-medium mb-2 text-default">
+        <label className="block text-label-medium mb-2 text-default">
           {label}
         </label>
       )}

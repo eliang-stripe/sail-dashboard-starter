@@ -13,17 +13,17 @@ export const FormField = ({
     <div className={`space-y-1 ${className}`}>
       <div>
         {label && (
-          <label className="block text-sm font-medium text-default">
+          <label className="block text-label-medium-emphasized text-default">
             {label}
           </label>
         )}
         {description && (
-          <p className="text-xs text-subdued">{description}</p>
+          <p className="text-label-small text-subdued">{description}</p>
         )}
       </div>
       {children}
       {error && errorMessage && (
-        <p className="text-xs text-critical">{errorMessage}</p>
+        <p className="text-label-small text-critical">{errorMessage}</p>
       )}
     </div>
   );
@@ -110,7 +110,7 @@ const Input = ({
           </div>
         )}
         {prefix && !Icon && (
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-subdued">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-body-small text-subdued">
             {prefix}
           </span>
         )}
@@ -124,7 +124,7 @@ const Input = ({
           {...props}
         />
         {suffix && (
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-subdued">
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-body-small text-subdued">
             {suffix}
           </span>
         )}
@@ -144,7 +144,7 @@ const Input = ({
     <>
       {inputElement}
       {error && errorMessage && (
-        <p className="mt-1.5 text-xs text-critical">{errorMessage}</p>
+        <p className="mt-1.5 text-label-small text-critical">{errorMessage}</p>
       )}
     </>
   );
@@ -185,7 +185,7 @@ export const Textarea = ({
     <>
       {textareaElement}
       {error && errorMessage && (
-        <p className="mt-1.5 text-xs text-critical">{errorMessage}</p>
+        <p className="mt-1.5 text-label-small text-critical">{errorMessage}</p>
       )}
     </>
   );
@@ -243,7 +243,7 @@ export const Select = ({
     <>
       {selectElement}
       {error && errorMessage && (
-        <p className="mt-1.5 text-xs text-critical">{errorMessage}</p>
+        <p className="mt-1.5 text-label-small text-critical">{errorMessage}</p>
       )}
     </>
   );
@@ -285,10 +285,10 @@ export const Checkbox = ({
       {(label || description) && (
         <div className="space-y-0.5">
           {label && (
-            <span className="block text-sm text-default">{label}</span>
+            <span className="block text-label-medium-emphasized text-default">{label}</span>
           )}
           {description && (
-            <span className="block text-xs text-subdued">{description}</span>
+            <span className="block text-label-small text-subdued">{description}</span>
           )}
         </div>
       )}
@@ -334,10 +334,10 @@ export const Radio = ({
       {(label || description) && (
         <div className="space-y-0.5">
           {label && (
-            <span className="block text-sm text-default">{label}</span>
+            <span className="block text-label-medium-emphasized text-default">{label}</span>
           )}
           {description && (
-            <span className="block text-xs text-subdued">{description}</span>
+            <span className="block text-label-small text-subdued">{description}</span>
           )}
         </div>
       )}

@@ -18,10 +18,10 @@ const ComponentSection = ({ title, children, code }) => {
   return (
     <section className="max-w-[800px]">
       <div className="flex items-center justify-between mb-2">
-        <h2 className="text-lg font-semibold text-default">{title}</h2>
+        <h2 className="text-body-large-emphasized text-default">{title}</h2>
         <button
           onClick={() => setShowCode(true)}
-          className="text-sm text-brand hover:text-button-primary-pressed transition-colors cursor-pointer flex items-center gap-1"
+          className="text-body-small text-brand hover:text-button-primary-pressed transition-colors cursor-pointer flex items-center gap-1"
         >
           <Icon name="api" size="xsmall" />
           View code
@@ -37,7 +37,7 @@ const ComponentSection = ({ title, children, code }) => {
         size="medium"
       >
         <div className="bg-gray-100 p-5 rounded-lg overflow-x-auto">
-          <pre className="text-xs text-gray-800 font-mono whitespace-pre">{code}</pre>
+          <pre className="text-label-small text-gray-800 font-mono whitespace-pre">{code}</pre>
         </div>
       </Dialog>
     </section>
@@ -142,7 +142,7 @@ export default function ComponentExamples() {
             activeTab={activeTabMd}
             onTabChange={setActiveTabMd}
           >
-            <p className="p-4 border border-border rounded-lg bg-offset text-sm text-subdued">Content for {activeTabMd}</p>
+            <p className="p-4 border border-border rounded-lg bg-offset text-body-small text-subdued">Content for {activeTabMd}</p>
           </Tabs>
         </div>
       </ComponentSection>
@@ -511,7 +511,7 @@ export default function ComponentExamples() {
           </div>
         }
       >
-        <p className="text-sm text-subdued">
+        <p className="text-body-small text-subdued">
           Are you sure you want to proceed? This will permanently delete the selected items.
         </p>
       </Dialog>

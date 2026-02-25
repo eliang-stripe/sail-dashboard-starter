@@ -7,22 +7,22 @@ const Chevron = () => (
 
 const Breadcrumb = ({ pages, currentPage, showCurrentPage = true }) => {
   return (
-    <nav className="flex items-center gap-2 text-sm">
+    <nav className="flex items-center gap-2">
       {pages.map((page, index) => (
         <span key={index} className="flex items-center gap-2">
           {index > 0 && <Chevron />}
           {page.to ? (
-            <Link to={page.to} className="font-medium text-brand">
+            <Link to={page.to} className="text-label-medium-emphasized text-brand">
               {page.label}
             </Link>
           ) : (
-            <span className="font-medium text-brand">{page.label}</span>
+            <span className="text-label-medium text-brand">{page.label}</span>
           )}
         </span>
       ))}
       <Chevron />
       {showCurrentPage && currentPage && (
-        <span className="text-subdued">{currentPage}</span>
+        <span className="text-body-small text-subdued">{currentPage}</span>
       )}
     </nav>
   );

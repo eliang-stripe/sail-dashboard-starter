@@ -12,7 +12,7 @@ export const Button = ({
   href,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-[6px] shrink-0 whitespace-nowrap transition-[background-color,box-shadow] duration-150 ease-[cubic-bezier(0,0.09,0.4,1)] hover:duration-0 focus:outline-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4';
+  const baseStyles = 'inline-flex items-center justify-center rounded-[6px] shrink-0 whitespace-nowrap transition-[background-color,box-shadow] duration-150 ease-[cubic-bezier(0,0.09,0.4,1)] hover:duration-0 focus:outline-none focus:ring-[rgba(8,142,249,0.36)] focus:ring-4';
 
   // topShadow + keyline composited as box-shadow layers (matches pay-server's Sail Button)
   // topShadow sits above the keyline in the shadow stack, creating an inset shadow effect on the border
@@ -23,9 +23,9 @@ export const Button = ({
   };
 
   const sizes = {
-    sm: 'h-[24px] py-[4px] px-[8px] text-[12px] leading-[16px] gap-[4px]',
-    md: 'h-[28px] py-[4px] px-[8px] text-[14px] leading-[20px] gap-[6px]',
-    lg: 'h-[40px] py-[8px] px-[16px] text-[16px] leading-[24px] gap-[8px]',
+    sm: 'h-[24px] py-[4px] px-[8px] text-label-small-emphasized gap-[4px]',
+    md: 'h-[28px] py-[4px] px-[8px] text-label-medium-emphasized gap-[6px]',
+    lg: 'h-[40px] py-[8px] px-[16px] text-label-large-emphasized gap-[8px]',
   };
 
   // Map button size to icon size

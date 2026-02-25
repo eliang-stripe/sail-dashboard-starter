@@ -32,10 +32,10 @@ export const Switch = ({
       {(label || description) && (
         <div className="space-y-0.5">
           {label && (
-            <span className="block text-sm text-default">{label}</span>
+            <span className="block text-label-medium-emphasized text-default">{label}</span>
           )}
           {description && (
-            <span className="block text-xs text-subdued">{description}</span>
+            <span className="block text-label-small text-subdued">{description}</span>
           )}
         </div>
       )}

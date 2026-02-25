@@ -1,13 +1,13 @@
 const sizes = {
-  sm: 'text-xs px-2 py-1 mb-1 text-xs',
-  md: 'text-sm px-2.5 py-1.5 mb-1 text-sm',
-  lg: 'text-base px-3 py-2 mb-1 text-sm',
+  sm: 'text-label-small px-2 py-1 mb-1',
+  md: 'text-label-medium px-2.5 py-1.5 mb-1',
+  lg: 'text-label-large px-3 py-2 mb-1',
 };
 
 const Tab = ({ label, active, onClick, size = 'md', isFirst = false }) => (
   <button
     onClick={onClick}
-    className={`relative font-medium cursor-pointer rounded-lg shrink-0 whitespace-nowrap transition-colors ${sizes[size]} ${isFirst ? 'ml-[-8px]' : ''} ${active ? 'text-brand hover:bg-brand/10' : 'text-subdued hover:text-default hover:bg-offset'
+    className={`relative text-label-medium-emphasized cursor-pointer rounded-lg shrink-0 whitespace-nowrap transition-colors ${sizes[size]} ${isFirst ? 'ml-[-8px]' : ''} ${active ? 'text-brand hover:bg-brand/10' : 'text-subdued hover:text-default hover:bg-offset'
       }`}
   >
     {label}

@@ -1,10 +1,6 @@
 # Stripe Dashboard Template
 
-A React dashboard template to use for prototypes. Built with React, Vite, and Tailwind CSS.
-
-## Getting Started
-
-Click the **"Use this template"** button at the top of this repository to create your own copy. Then clone your new repo and install dependencies:
+A React dashboard template for prototypes. Built with React 19, Vite 7, and Tailwind CSS 4.
 
 ## Quick Start
 
@@ -13,93 +9,103 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:5173` to see the dashboard with component examples.
+Visit `http://localhost:5173` to see the dashboard.
 
 ## Features
 
-- **Components** - Badge, Button, Dialog, Input, Select, Switch, Table, Toggle, Tooltip
-- **Semantic color tokens** - Consistent theming with `bg-surface`, `bg-offset`, `text-default`, etc.
-- **Routing ready** - React Router setup with individual page files
+- **Sidebar + header layout** — Fixed sidebar (250px), fixed header (60px), scrollable content (max-width 1280px)
+- **Component library** — Badge, Breadcrumb, Button, Dialog, Input, Select, Checkbox, Radio, Switch, Table, Tabs, Toggle, Tooltip
+- **Semantic color tokens** — `bg-surface`, `bg-offset`, `text-default`, `text-subdued`, `border-border`, etc.
+- **Custom typography system** — `text-heading-large`, `text-body-small`, `text-label-medium-emphasized`, etc.
+- **Dark mode** — Toggle via prototype control panel, all tokens adapt automatically
+- **Sandbox mode** — Test banner with layout adjustments
+- **Routing** — React Router 7 with nested routes and dynamic params
 
 ## Project Structure
 
 ```
 src/
 ├── components/
-│   ├── DashboardLayout.jsx   # Sidebar, Header, NavItem, SubNavItem
-│   ├── Badge.jsx            # Status badges
-│   ├── Button.jsx           # Primary, secondary, danger buttons
-│   ├── Dialog.jsx           # Modal dialogs
-│   ├── Input.jsx            # Input, Select, Textarea, Checkbox, Radio
-│   ├── Switch.jsx           # Toggle switches
-│   ├── Table.jsx            # Data tables
-│   ├── Toggle.jsx           # Selectable toggle cards
-│   └── Tooltip.jsx          # Hover tooltips
+│   ├── DashboardLayout.jsx   # Sidebar, Header, NavItem, SubNavItem, SandboxBanner
+│   ├── ControlPanel.jsx      # Floating prototype controls (dark mode, sandbox)
+│   ├── Badge.jsx             # Status badges (default/success/warning/danger/info)
+│   ├── Breadcrumb.jsx        # Breadcrumb navigation
+│   ├── Button.jsx            # Buttons (primary/secondary/danger, sm/md/lg)
+│   ├── Dialog.jsx            # Modal dialogs (small/medium/large/xlarge/full)
+│   ├── Input.jsx             # Input, Select, Textarea, Checkbox, Radio
+│   ├── KeyValuePair.jsx      # Key-value display
+│   ├── Switch.jsx            # Toggle switches
+│   ├── Table.jsx             # Data tables with sorting and row clicks
+│   ├── Tabs.jsx              # Tabbed interfaces (sm/md/lg)
+│   ├── Toggle.jsx            # Card-style selectors with ToggleGroup
+│   └── Tooltip.jsx           # Hover tooltips (top/bottom/left/right)
 ├── icons/
-│   └── SailIcons.jsx        # SVG icon system
-├── pages/                   # One file per route
+│   └── SailIcons.jsx         # SVG icon system
+├── data/
+│   └── connectedAccounts.js  # Mock data for connected accounts
+├── pages/
 │   ├── Home.jsx
 │   ├── Balances.jsx
-│   └── ...
-├── App.jsx                  # Main layout + routes
-├── main.jsx                 # Entry point
-└── index.css                # Tailwind theme + custom CSS
+│   ├── Transactions.jsx
+│   ├── Directory.jsx
+│   ├── ProductCatalog.jsx
+│   ├── ConnectOverview.jsx
+│   ├── ConnectedAccounts.jsx
+│   └── ConnectedAccountDetail.jsx
+├── App.jsx                    # Main layout + routes
+├── main.jsx                   # Entry point
+└── index.css                  # Tailwind theme, color tokens, typography utilities
 ```
 
-### Icons
+## Typography
+
+Use the custom `@utility` text styles defined in `src/index.css` instead of default Tailwind classes like `text-sm` or `text-base`.
+
+| Category | Utilities |
+|----------|-----------|
+| Display | `text-display-xlarge`, `-large`, `-medium`, `-small` (+ `-subdued` variants) |
+| Heading | `text-heading-xlarge`, `-large`, `-medium`, `-small`, `-xsmall` (+ `-subdued` variants) |
+| Body | `text-body-large`, `-medium`, `-small` (+ `-emphasized` variants) |
+| Label | `text-label-large`, `-medium`, `-small` (+ `-emphasized` variants) |
+
+```jsx
+<h1 className="text-heading-xlarge text-default">Page Title</h1>
+<p className="text-body-small text-subdued">Description text</p>
+<span className="text-label-medium-emphasized text-brand">Active label</span>
+```
+
+## Color Tokens
+
+All colors are defined as CSS custom properties in `src/index.css` with automatic dark mode overrides.
+
+| Token | Usage |
+|-------|-------|
+| `bg-surface` | Page background |
+| `bg-offset` | Offset sections, hover states |
+| `text-default` | Primary text |
+| `text-subdued` | Secondary text |
+| `text-brand` | Brand purple text |
+| `border-border` | Standard borders |
+
+## Icons
 
 ```jsx
 import { Icon } from './icons/SailIcons';
 
 <Icon name="home" size="small" fill="currentColor" />
-<Icon name="settings" size="medium" fill="#6366f1" />
 ```
 
 Sizes: `xxsmall` (8px), `xsmall` (12px), `small` (16px), `medium` (20px), `large` (32px)
 
-## Theming
-
-All colors are defined as Tailwind CSS 4 theme variables in `src/index.css`. Use them as standard utility classes:
-
-### Color Tokens
-
-| Token | Class | Value | Usage |
-|-------|-------|-------|-------|
-| `--color-surface` | `bg-surface` | #ffffff | Page background |
-| `--color-offset` | `bg-offset` | #F5F6F8 | Offset sections, hover states |
-| `--color-blurple` | `bg-blurple` | #635BFF | Brand purple |
-| `--color-border` | `border-border` | #D8DEE4 | Standard borders |
-| `--color-default` | `text-default` | #353A44 | Primary text |
-| `--color-subdued` | `text-subdued` | #596171 | Secondary text |
-| `--color-brand` | `text-brand` | #533AFD | Brand text |
-
-### Usage
-
-```jsx
-{/* Background colors */}
-<div className="bg-surface">White background</div>
-<div className="bg-offset">Gray offset background</div>
-<div className="hover:bg-offset">Hover state</div>
-
-{/* Text colors */}
-<p className="text-default">Primary text</p>
-<p className="text-subdued">Secondary text</p>
-<p className="text-brand">Brand colored text</p>
-
-{/* Borders */}
-<div className="border border-border">Standard border</div>
-```
-
 ## Adding New Pages
 
-1. Create a new file in `src/pages/`:
+1. Create a file in `src/pages/`:
 
 ```jsx
-// src/pages/MyPage.jsx
 export default function MyPage() {
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-semibold">My Page</h1>
+      <h1 className="text-heading-large text-default">My Page</h1>
     </div>
   );
 }
@@ -113,7 +119,7 @@ import MyPage from './pages/MyPage';
 <Route path="/my-page" element={<MyPage />} />
 ```
 
-3. Add navigation item in `src/components/DashboardLayout.jsx`:
+3. Add nav item in `src/components/DashboardLayout.jsx`:
 
 ```jsx
 <NavItem
@@ -127,8 +133,8 @@ import MyPage from './pages/MyPage';
 ## Scripts
 
 ```bash
-npm run dev      # Start development server
-npm run build    # Production build
+npm run dev      # Start development server at localhost:5173
+npm run build    # Production build to dist/
 npm run preview  # Preview production build
 npm run lint     # Run ESLint
 ```

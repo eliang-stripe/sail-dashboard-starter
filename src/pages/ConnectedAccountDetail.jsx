@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
 import { Icon } from '../icons/SailIcons';
@@ -45,7 +45,7 @@ const AccountLogo = () => (
 // Section header for right column
 const SectionHeader = ({ title, action }) => (
   <div className="flex items-center justify-between mb-3">
-    <h3 className="text-lg font-semibold text-default">{title}</h3>
+    <h3 className="text-heading-small text-default">{title}</h3>
     {action}
   </div>
 );
@@ -69,26 +69,26 @@ const OverviewContent = ({ account }) => {
           <div className="flex-1 bg-offset rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-subdued mb-1">Lifetime total volume</div>
-                <div className="text-xl font-semibold text-default">{formatCurrency(lifetimeVolume.amount, { compact: true })}</div>
+                <div className="text-body-small text-subdued mb-1">Lifetime total volume</div>
+                <div className="text-body-large-emphasized text-default">{formatCurrency(lifetimeVolume.amount, { compact: true })}</div>
               </div>
             </div>
           </div>
           <div className="flex-1 bg-offset rounded-lg p-4">
-            <div className="text-sm text-subdued mb-1">In transit to bank</div>
-            <div className="text-xl font-semibold text-default">$7,600.00</div>
+            <div className="text-body-small text-subdued mb-1">In transit to bank</div>
+            <div className="text-body-large-emphasized text-default">$7,600.00</div>
           </div>
         </div>
 
         {/* Balances Section */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-default mb-4">Balances</h3>
+          <h3 className="text-heading-small text-default mb-4">Balances</h3>
           <div className="bg-offset rounded-lg h-64" />
         </div>
 
         {/* Money movement Section */}
         <div>
-          <h3 className="text-base font-semibold text-default mb-4">Money movement</h3>
+          <h3 className="text-heading-small text-default mb-4">Money movement</h3>
           <Tabs
             tabs={moneyMovementTabs}
             activeTab={moneyMovementTab}
@@ -110,9 +110,9 @@ const OverviewContent = ({ account }) => {
           />
           <div className="flex items-center gap-1.5 mb-1">
             <Icon name="checkCircle" size="xsmall" fill="currentColor" className="text-icon-success" />
-            <span className="text-sm font-semibold text-default">Active</span>
+            <span className="text-body-small-emphasized text-default">Active</span>
           </div>
-          <div className="text-sm">
+          <div className="text-body-small">
             {capabilities.items.map((item, index) => (
               <span key={item}>
                 <a href="#" className="leading-5 text-subdued underline decoration-dashed hover:decoration-solid underline-offset-3">{item}</a>
@@ -179,20 +179,11 @@ export default function ConnectedAccountDetail() {
     navigator.clipboard.writeText(accountId);
   };
 
-  const headerRef = useRef(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    if (headerRef.current) {
-      setHeaderHeight(headerRef.current.offsetHeight);
-    }
-  });
-
   return (
-    <div>
-      {/* Fixed header: breadcrumbs + account info + tabs */}
-      <div ref={headerRef} className="fixed top-[60px] left-sidebar-width right-0 z-[5] bg-surface">
-        <div className="max-w-[1280px] mx-auto px-8">
+    <div className="relative">
+      {/* Sticky header: breadcrumbs + account info + tabs */}
+      <div className="sticky z-[5] bg-surface" style={{ top: 'var(--header-offset)' }}>
+        <div className="px-8">
           {/* Breadcrumbs */}
           <div className="pt-4 mb-2">
             <Breadcrumb
@@ -206,10 +197,10 @@ export default function ConnectedAccountDetail() {
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center gap-3">
                 <AccountLogo />
-                <h1 className="text-3xl font-semibold text-default">{account.name}</h1>
+                <h1 className="text-heading-xlarge text-default">{account.name}</h1>
                 <Badge variant={statusInfo.variant}>{statusInfo.label}</Badge>
               </div>
-              <div className="flex items-center gap-1.5 mt-1 text-sm text-subdued">
+              <div className="flex items-center gap-1.5 mt-1 text-body-small text-subdued">
                 <Icon name="email" size="xsmall" fill="currentColor" />
                 {account.email}
               </div>
@@ -230,12 +221,12 @@ export default function ConnectedAccountDetail() {
         </div>
       </div>
 
-      {/* Tab Content (scrolls under fixed header) */}
-      <div className="px-8 pt-4" style={{ marginTop: headerHeight }}>
+      {/* Tab Content */}
+      <div className="px-8 pt-4">
         {activeTab === 'activity' && <OverviewContent account={account} />}
         {activeTab !== 'activity' && (
           <div className="text-subdued">
-            <h2 className="text-lg font-semibold text-default mb-2">
+            <h2 className="text-body-large-emphasized text-default mb-2">
               {pageTabs.find((t) => t.key === activeTab)?.label || 'Unknown'}
             </h2>
             <p>This tab is not yet implemented.</p>

@@ -65,10 +65,10 @@ const Table = ({
   const EmptyStateContent = () => (
     <div className="border border-dashed border-border rounded-lg py-16 px-8 flex flex-col items-center justify-center">
       {emptyStateTitle && (
-        <div className="text-base font-semibold text-default">{emptyStateTitle}</div>
+        <div className="text-body-medium-emphasized text-default">{emptyStateTitle}</div>
       )}
       {emptyStateDescription && (
-        <div className="text-sm mt-1 text-subdued">{emptyStateDescription}</div>
+        <div className="text-body-small mt-1 text-subdued">{emptyStateDescription}</div>
       )}
       {emptyStateAction && <div className="mt-4">{emptyStateAction}</div>}
     </div>
@@ -90,7 +90,7 @@ const Table = ({
                 {columns.map((column, colIndex) => (
                   <th
                     key={column.key || colIndex}
-                    className={`py-3 ${column.paddingX || cellPaddingX} text-xs font-semibold text-default ${getAlignClass(column.align)} ${getWidthClass(column.width)}`}
+                    className={`py-3 ${column.paddingX || cellPaddingX} text-label-small-emphasized text-default ${getAlignClass(column.align)} ${getWidthClass(column.width)}`}
                   >
                     {column.header || ''}
                   </th>
@@ -108,7 +108,7 @@ const Table = ({
                 data.map((item, rowIndex) => (
                   <tr
                     key={item[rowKey] ?? rowIndex}
-                    className={`border-b text-sm text-subdued border-neutral-50 hover:bg-offset transition-colors duration-100 ${onRowClick ? 'cursor-pointer' : ''}`}
+                    className={`border-b text-body-small text-subdued border-neutral-50 hover:bg-offset transition-colors duration-100 ${onRowClick ? 'cursor-pointer' : ''}`}
                     onClick={() => onRowClick?.(item, rowIndex)}
                   >
                     {columns.map((column, colIndex) => (

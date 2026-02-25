@@ -92,10 +92,10 @@ const Dialog = ({
         {hasHeader && (
           <div className="px-[16px] pt-[16px] pb-4">
             {title && (
-              <h2 className="text-lg font-semibold text-default pr-8">{title}</h2>
+              <h2 className="text-body-large-emphasized text-default pr-8">{title}</h2>
             )}
             {subtitle && (
-              <p className="mt-1 text-sm text-subdued">{subtitle}</p>
+              <p className="mt-1 text-body-small text-subdued">{subtitle}</p>
             )}
           </div>
         )}

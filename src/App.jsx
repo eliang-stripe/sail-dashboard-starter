@@ -12,7 +12,6 @@ import ProductCatalog from './pages/ProductCatalog';
 import ConnectOverview from './pages/ConnectOverview';
 import ConnectedAccounts from './pages/ConnectedAccounts';
 import ConnectedAccountDetail from './pages/ConnectedAccountDetail';
-import EmbeddedFinance from './pages/EmbeddedFinance';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -39,7 +38,7 @@ export default function App() {
           <Header sandboxMode={sandboxMode} />
 
           {/* Main Content Area - offset for fixed sidebar and header */}
-          <div className="ml-sidebar-width flex flex-col min-w-0 flex-1 relative" style={{ paddingTop: 60 + (sandboxMode ? SANDBOX_HEIGHT : 0) }}>
+          <div className="ml-sidebar-width flex flex-col min-w-0 flex-1 relative" style={{ paddingTop: 60 + (sandboxMode ? SANDBOX_HEIGHT : 0), '--header-offset': `${60 + (sandboxMode ? SANDBOX_HEIGHT : 0)}px` }}>
             <div className="max-w-[1280px] w-full mx-auto">
 
               {/* Content */}
@@ -53,7 +52,6 @@ export default function App() {
                 <Route path="/connect/accounts" element={<ConnectedAccounts />} />
                 <Route path="/connect/accounts/:accountId" element={<ConnectedAccountDetail />} />
                 <Route path="/connect/accounts/:accountId/:tab" element={<ConnectedAccountDetail />} />
-                <Route path="/embedded-finance" element={<EmbeddedFinance />} />
               </Routes>
             </div>
           </div>

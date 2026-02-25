@@ -8,7 +8,7 @@ import Dialog from './Dialog';
 export const ControlPanelButton = ({ onClick, active, className, children }) => (
   <button
     onClick={onClick}
-    className={`px-3 py-1 text-sm font-medium rounded-lg w-full bg-button-secondary-bg hover:bg-button-secondary-bg-hover border border-border cursor-pointer transition-colors ${active
+    className={`px-3 py-1 text-label-medium rounded-lg w-full bg-button-secondary-bg hover:bg-button-secondary-bg-hover border border-border cursor-pointer transition-colors ${active
       ? 'bg-button-primary-bg text-button-primary-text'
       : 'text-default hover:bg-offset'
       } ${className || ''}`}
@@ -22,7 +22,7 @@ const ControlPanelHeader = ({ minimized, onToggle }) => (
     onClick={onToggle}
     className="flex items-center justify-between gap-4 px-3 py-2 cursor-pointer transition-colors hover:bg-offset"
   >
-    <span className="text-sm font-medium text-default">
+    <span className="text-label-medium-emphasized text-default">
       Prototype controls
     </span>
     <button className="text-icon-default hover:text-icon-subdued cursor-pointer transition-colors">
@@ -169,7 +169,7 @@ function useDragSnap() {
 const InfoBanner = () => (
   <div className="flex flex-col gap-2 w-full p-3 bg-offset rounded-lg">
     <Icon name="info" size="xxsmall" fill="currentColor" />
-    <p className="text-sm text-subdued">Use this space to add controls for your prototype. You can also drag the panel to other side!</p>
+    <p className="text-body-small text-subdued">Use this space to add controls for your prototype. You can also drag the panel to other side!</p>
   </div>
 );
 
@@ -183,7 +183,7 @@ const ContextDialog = ({ open, onClose }) => (
     overlayClassName="z-[101]"
   >
     <div className="flex gap-4 w-full bg-offset rounded-lg mx-auto px-4 py-32">
-      <p className="text-base text-subdued max-w-[700px] mx-auto text-center">
+      <p className="text-body-medium text-subdued max-w-[700px] mx-auto text-center">
         Use this dialog to share context about the project or work shown in this prototype. You can describe the problem being solved, the target audience, key decisions, or anything else that helps viewers understand what they're looking at.
       </p>
     </div>

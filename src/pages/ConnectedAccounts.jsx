@@ -19,15 +19,15 @@ const StatusTab = ({ label, count, active, onClick }) => (
       : 'border-border bg-surface hover:border-brand'
       }`}
   >
-    <span className={`text-base ${active ? 'text-brand font-semibold' : 'text-subdued'}`}>{label}</span>
-    <span className={`text-base ${active ? 'text-brand' : 'text-default'}`}>
+    <span className={active ? 'text-label-medium-emphasized text-brand' : 'text-label-medium text-subdued'}>{label}</span>
+    <span className={`text-body-medium ${active ? 'text-brand' : 'text-default'}`}>
       {count.toLocaleString()}
     </span>
   </button>
 );
 
 const FilterPill = ({ label }) => (
-  <button className="flex items-center gap-1.5 px-2 py-1 text-xs font-medium text-subdued bg-surface border border-dashed border-border rounded-full hover:bg-offset transition-colors cursor-pointer">
+  <button className="flex items-center gap-1.5 px-2 py-1 text-label-small text-subdued bg-surface border border-dashed border-border rounded-full hover:bg-offset transition-colors cursor-pointer">
     <Icon name="addCircle" size="xsmall" fill="currentColor" />
     {label}
   </button>
@@ -46,7 +46,7 @@ const tableColumns = [
     key: 'name',
     header: 'Account',
     width: 'grow',
-    render: (item) => <span className="font-medium text-default">{item.name}</span>,
+    render: (item) => <span className="text-label-medium text-default">{item.name}</span>,
   },
   {
     key: 'status',
@@ -93,7 +93,7 @@ export default function ConnectedAccounts() {
     <div className="px-8 py-8">
       {/* Page Header */}
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-semibold text-default">Connected accounts</h1>
+        <h1 className="text-heading-xlarge text-default">Connected accounts</h1>
         <div className="flex items-center gap-2">
           <Button variant="secondary" icon="add">Create</Button>
           <Button variant="secondary" icon="more" />
