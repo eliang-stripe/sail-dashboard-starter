@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../components/Button';
-import { Icon } from '../icons/SailIcons';
-import Table from '../components/Table';
-import Badge from '../components/Badge';
+import { Button } from '../../../components/Button';
+import { Icon } from '../../../icons/SailIcons';
+import Table from '../../../components/Table';
+import Badge from '../../../components/Badge';
 import { connectedAccounts, statusCounts, statusConfig } from '../data/connectedAccounts';
 
 const StatusBadge = ({ status }) => {
@@ -86,7 +86,7 @@ export default function ConnectedAccounts() {
   const navigate = useNavigate();
 
   const handleRowClick = (account) => {
-    navigate(`/connect/accounts/${account.id}`);
+    navigate(account.id, { relative: 'path' });
   };
 
   return (

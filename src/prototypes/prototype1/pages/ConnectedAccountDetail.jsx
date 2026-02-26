@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Button } from '../components/Button';
-import { Icon } from '../icons/SailIcons';
-import Badge from '../components/Badge';
-import Breadcrumb from '../components/Breadcrumb';
-import Tabs from '../components/Tabs';
-import KeyValuePair from '../components/KeyValuePair';
+import { Button } from '../../../components/Button';
+import { Icon } from '../../../icons/SailIcons';
+import Badge from '../../../components/Badge';
+import Breadcrumb from '../../../components/Breadcrumb';
+import Tabs from '../../../components/Tabs';
+import KeyValuePair from '../../../components/KeyValuePair';
+import { useBasePath } from '../../../contexts/BasePath';
 import { getAccountById, statusConfig, sharedOverviewData } from '../data/connectedAccounts';
 
 // Page-level tab configuration
@@ -164,15 +165,16 @@ const OverviewContent = ({ account }) => {
 };
 
 export default function ConnectedAccountDetail() {
-  const { accountId, tab } = useParams();
+  const { accountId, '*': tabPath } = useParams();
   const navigate = useNavigate();
-  const activeTab = tab || 'activity';
+  const basePath = useBasePath();
+  const activeTab = tabPath || 'activity';
 
   const account = getAccountById(accountId);
   const statusInfo = statusConfig[account.status] || statusConfig.enabled;
 
   const handleTabChange = (tabKey) => {
-    navigate(`/connect/accounts/${accountId}/${tabKey}`);
+    navigate(`${basePath}/connect/accounts/${accountId}/${tabKey}`);
   };
 
   const handleCopyId = () => {
@@ -187,7 +189,7 @@ export default function ConnectedAccountDetail() {
           {/* Breadcrumbs */}
           <div className="pt-4 mb-2">
             <Breadcrumb
-              pages={[{ label: 'Connected accounts', to: '/connect/accounts' }]}
+              pages={[{ label: 'Connected accounts', to: `${basePath}/connect/accounts` }]}
               showCurrentPage={false}
             />
           </div>

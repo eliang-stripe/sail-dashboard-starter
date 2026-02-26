@@ -1,6 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { Icon } from '../icons/SailIcons';
-import Switch from './Switch';
 import Dialog from './Dialog';
 
 // --- Primitives ---
@@ -17,7 +16,7 @@ export const ControlPanelButton = ({ onClick, active, className, children }) => 
   </button>
 );
 
-const ControlPanelHeader = ({ minimized, onToggle }) => (
+export const ControlPanelHeader = ({ minimized, onToggle }) => (
   <div
     onClick={onToggle}
     className="flex items-center justify-between gap-4 px-3 py-2 cursor-pointer transition-colors hover:bg-offset"
@@ -31,12 +30,12 @@ const ControlPanelHeader = ({ minimized, onToggle }) => (
   </div>
 );
 
-const ControlPanelBody = ({ minimized, children }) => (
+export const ControlPanelBody = ({ minimized, children }) => (
   <div
     className={`grid transition-[grid-template-rows] duration-200 ease-in-out ${minimized ? 'grid-rows-[0fr]' : 'grid-rows-[1fr]'}`}
   >
     <div className="overflow-hidden w-full">
-      <div className="flex flex-col w-full items-center gap-3 px-3 py-2 text-icon-default">
+      <div className="flex flex-col w-full items-center gap-2.5 px-3 py-3 text-icon-default">
         {children}
       </div>
     </div>
@@ -45,10 +44,10 @@ const ControlPanelBody = ({ minimized, children }) => (
 
 // --- Drag constants ---
 
-const MARGIN = 8;
-const PANEL_WIDTH = 230;
+export const MARGIN = 8;
+export const PANEL_WIDTH = 230;
 
-const DropZone = ({ snapSide, panelRef }) => {
+export const DropZone = ({ snapSide, panelRef }) => {
   const height = panelRef.current?.offsetHeight || 40;
   const isLeftActive = snapSide === 'left';
 
@@ -76,7 +75,7 @@ const DropZone = ({ snapSide, panelRef }) => {
   );
 };
 
-function useDragSnap() {
+export function useDragSnap() {
   const panelRef = useRef(null);
   const [side, setSide] = useState('right');
   const [dragging, setDragging] = useState(false);
@@ -166,14 +165,13 @@ function useDragSnap() {
 
 // --- Sections (add your own controls here) ---
 
-const InfoBanner = () => (
+export const InfoBanner = () => (
   <div className="flex flex-col gap-2 w-full p-3 bg-offset rounded-lg">
-    <Icon name="info" size="xxsmall" fill="currentColor" />
     <p className="text-body-small text-subdued">Use this space to add controls for your prototype. You can also drag the panel to other side!</p>
   </div>
 );
 
-const ContextDialog = ({ open, onClose }) => (
+export const ContextDialog = ({ open, onClose, children }) => (
   <Dialog
     open={open}
     onClose={onClose}
@@ -182,72 +180,12 @@ const ContextDialog = ({ open, onClose }) => (
     size="full"
     overlayClassName="z-[101]"
   >
-    <div className="flex gap-4 w-full bg-offset rounded-lg mx-auto px-4 py-32">
-      <p className="text-body-medium text-subdued max-w-[700px] mx-auto text-center">
-        Use this dialog to share context about the project or work shown in this prototype. You can describe the problem being solved, the target audience, key decisions, or anything else that helps viewers understand what they're looking at.
-      </p>
-    </div>
+    {children || (
+      <div className="flex gap-4 w-full bg-offset rounded-lg mx-auto px-4 py-32">
+        <p className="text-body-medium text-subdued max-w-[700px] mx-auto text-center">
+          Use this dialog to share context about the project or work shown in this prototype. You can describe the problem being solved, the target audience, key decisions, or anything else that helps viewers understand what they're looking at.
+        </p>
+      </div>
+    )}
   </Dialog>
 );
-
-// --- Main component ---
-
-export default function ControlPanel({ darkMode, onToggleDarkMode, sandboxMode, onToggleSandboxMode }) {
-  const [minimized, setMinimized] = useState(false);
-  const [contextOpen, setContextOpen] = useState(false);
-  const { side, dragging, settling, settlePos, dragPos, snapTarget, panelRef, onPointerDown, didDrag } = useDragSnap();
-
-  let style;
-  if (dragging && dragPos) {
-    // During drag: track pointer exactly, no transition
-    style = { left: dragPos.left, right: 'auto', bottom: dragPos.bottom, transition: 'none' };
-  } else if (settling && settlePos) {
-    // Settling: animate to snap position using left
-    style = { left: settlePos.left, right: 'auto', bottom: settlePos.bottom, transition: 'left 0.25s ease, bottom 0.25s ease' };
-  } else {
-    // Resting: use right/left CSS for scrollbar-proof positioning
-    style = side === 'right'
-      ? { right: MARGIN, left: 'auto', bottom: MARGIN }
-      : { left: MARGIN, right: 'auto', bottom: MARGIN };
-  }
-
-  return (
-    <>
-      {dragging && didDrag.current && (
-        <DropZone snapSide={snapTarget} panelRef={panelRef} />
-      )}
-
-      <div
-        ref={panelRef}
-        onPointerDown={onPointerDown}
-        className={`fixed z-[100] bg-surface rounded-lg shadow-lg overflow-hidden w-[230px] border border-border select-none ${dragging ? 'cursor-grabbing' : ''}`}
-        style={style}
-      >
-        <ControlPanelHeader
-          minimized={minimized}
-          onToggle={() => { if (!didDrag.current) setMinimized(!minimized); }}
-        />
-        <ControlPanelBody minimized={minimized}>
-          <InfoBanner />
-          <Switch
-            checked={darkMode}
-            onChange={onToggleDarkMode}
-            label="Dark mode"
-            className="w-full"
-          />
-          <Switch
-            checked={sandboxMode}
-            onChange={onToggleSandboxMode}
-            label="Sandbox mode"
-            className="w-full"
-          />
-          <ControlPanelButton onClick={() => setContextOpen(true)}>
-            Show context
-          </ControlPanelButton>
-        </ControlPanelBody>
-      </div>
-
-      <ContextDialog open={contextOpen} onClose={() => setContextOpen(false)} />
-    </>
-  );
-}
