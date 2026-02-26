@@ -240,7 +240,7 @@ body {
   font-family: var(--font-sans);
 }
 
-body:has(.dark) {
+.dark body {
   background-color: #14171d;
 }
 

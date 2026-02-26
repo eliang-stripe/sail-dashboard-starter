@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import Badge from '../components/Badge';
-import Button from '../components/Button';
-import Input, { Select, Textarea, Checkbox, Radio } from '../components/Input';
-import Table from '../components/Table';
-import Switch from '../components/Switch';
-import Toggle, { ToggleGroup } from '../components/Toggle';
-import Tooltip from '../components/Tooltip';
-import Dialog from '../components/Dialog';
-import Breadcrumb from '../components/Breadcrumb';
-import Tabs from '../components/Tabs';
-import { Icon } from '../icons/SailIcons';
+import Badge from '../../../components/Badge';
+import Button from '../../../components/Button';
+import Input, { Select, Textarea, Checkbox, Radio } from '../../../components/Input';
+import Table from '../../../components/Table';
+import Switch from '../../../components/Switch';
+import Toggle, { ToggleGroup } from '../../../components/Toggle';
+import Tooltip from '../../../components/Tooltip';
+import Dialog from '../../../components/Dialog';
+import Breadcrumb from '../../../components/Breadcrumb';
+import Tabs from '../../../components/Tabs';
+import { Icon } from '../../../icons/SailIcons';
 
 // Reusable component section with code dialog
 const ComponentSection = ({ title, children, code }) => {
@@ -36,8 +36,8 @@ const ComponentSection = ({ title, children, code }) => {
         title={`${title} Code`}
         size="medium"
       >
-        <div className="bg-gray-100 p-5 rounded-lg overflow-x-auto">
-          <pre className="text-label-small text-gray-800 font-mono whitespace-pre">{code}</pre>
+        <div className="bg-offset p-5 rounded-lg overflow-x-auto">
+          <pre className="text-label-small text-default font-mono whitespace-pre">{code}</pre>
         </div>
       </Dialog>
     </section>

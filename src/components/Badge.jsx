@@ -8,6 +8,7 @@ const Badge = ({ children, variant = 'default', className = '' }) => {
     warning: 'text-badge-warning-text bg-badge-warning-bg border-badge-warning-border',
     danger: 'text-badge-danger-text bg-badge-danger-bg border-badge-danger-border',
     info: 'text-badge-info-text bg-badge-info-bg border-badge-info-border',
+    new: `text-brand bg-brand-50 border-brand-50`,
   };
 
   return (
